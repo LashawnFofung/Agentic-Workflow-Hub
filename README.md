@@ -23,7 +23,7 @@ This is my foundational project demonstrating the **"Agentic Loop."**
 
    <b>1. 🧠 Connect the Brain (Google Gemini)</b>
 
-  - <b>1. Get your Key:</b> Go to Google AI Studio and click "Create API key".
+  - <b>1. Get your Key:</b> Go to [Google AI Studio](https://aistudio.google.com) and click "Create API key".
   
   - <b>2. Add to n8n:</b> Open the Google Gemini Chat Model node.
   
