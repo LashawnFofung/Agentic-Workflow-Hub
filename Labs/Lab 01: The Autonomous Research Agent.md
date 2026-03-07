@@ -1,35 +1,33 @@
 # 🧪 Lab 01: The Autonomous Research Agent
 
-## My First Agent
+## Table of Contents
+- "Hello World!"
 
-**Tool-Use**
-The Research Agent 
+- 
 
 ----
+## AI Agent Workflow
 
-## Building The AI Agent
+#### Hello World!
 
+This "Hello World" lab is a foundational exercise designed to verify that your n8n environment is correctly installed and configured. By building this simple workflow, you confirm that you can create nodes, configure them, and successfully execute an end-to-end process.
 
-**n8n Prompt**
+**Lab Summary: Hello World in n8n**
 
-Create an AI Agent workflow using the AI Agent node. It should start with a Chat Trigger. The agent needs to be connected to Google Gemini as the model, Window Buffer Memory for context, and a Google Search (SerpApi) tool. The goal is for the agent to research any topic I provide and return a structured report.
+- <b>Objective:</b> The primary goal is to validate your development environment by displaying a "Hello World!" message. This provides immediate confirmation that the system is operational.
 
-<br>
+- <b>Key Tasks:</b>
 
-**In-action**
+  - Initialize a new workflow within the n8n interface.
+  
+  - Add a Manual Trigger node to initiate the workflow manually.
+  
+  - Configure a Code node to return the string: {"message": "Hello World!"}.
+  
+  - Execute the workflow and inspect the output in the n8n interface to verify successful delivery.
 
-The agent will search the web, analyze the information, and return a comprehensive structured report with all the key details organized into clear sections.
-Let me know if you'd like to adjust the report structure, add more tools, or modify how the agent behaves!
+- <b>Why It Matters:</b> While simple, this exercise is a standard "passing ritual" for developers. It ensures your toolchain (editor, interpreter, and execution environment) is working correctly before you attempt to build more complex, agentic automations.
 
-<br>
+This lab serves as your first step toward becoming a "flow programmer," helping you get comfortable with the n8n canvas and data flow before you move on to advanced agentic workflows.
 
-**Connection Port	What to connect it to	Purpose**
-
-- <b>Chat Trigger:</b>	This is the "Data flow"—the user's message enters here.
-
-- <b>AI Language Model - Google Gemini Chat Model:</b>	This is the "Brain"—the agent's reasoning engine.
-
-- <b>AI Memory - Window Buffer Memory:</b>	This is the "Memory"—what the agent remembers from 5 minutes ago.
-
-- <b>AI Tool - SerpApi (Google Search):	These are the "Hands"—the tools the agent can use to perform actions.
 
