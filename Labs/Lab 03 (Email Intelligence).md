@@ -1,4 +1,4 @@
-# 🧪 For Lab 03 (Email Intelligence)
+# 🧪 Lab 03 (Email Intelligence)
 
 ## Human-in-the-loop
 
