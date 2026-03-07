@@ -17,6 +17,7 @@ Create an AI Agent workflow using the AI Agent node. It should start with a Chat
 <br>
 
 **In-action**
+
 The agent will search the web, analyze the information, and return a comprehensive structured report with all the key details organized into clear sections.
 Let me know if you'd like to adjust the report structure, add more tools, or modify how the agent behaves!
 
