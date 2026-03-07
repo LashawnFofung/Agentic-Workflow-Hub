@@ -35,7 +35,23 @@ This lab serves as your first step toward becoming a "flow programmer," helping 
 
 <h1></h1>
 
+### My First Automation Lab: Conditional Flow
 
+A foundational n8n lab demonstrating core automation principles: triggers, data transformation via code, and conditional branching. This project serves as a starting point for building complex, logic-driven AI agents.
+
+A beginner-friendly project designed to master the fundamentals of **n8n workflow automation**. In this lab, we move beyond linear tasks to create a logic-driven workflow that makes decisions based on data.
+
+<b>What You’ll Learn</b>
+- **Trigger Management:** Setting up schedules to act as an agent's "heartbeat."
+- **Data Transformation:** Using the Code Node to inject and manipulate JSON data.
+- **Conditional Logic:** Implementing `If` nodes to create branching outcomes.
+- **Branching Workflows:** Executing different actions based on real-time data analysis.
+
+<b>Lab Overview</b>
+1. **Schedule Trigger:** Defines the automation frequency.
+2. **Code Node:** Simulates an data source (e.g., weather conditions).
+3. **If Node:** Logic engine that evaluates data (e.g., `if weather == 'sunny'`).
+4. **Set Nodes:** Defines branching outcomes (e.g., "Bright day!" vs "Cloudy day").
 
 
 
