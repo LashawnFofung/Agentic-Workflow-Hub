@@ -37,21 +37,22 @@ This lab serves as your first step toward becoming a "flow programmer," helping 
 
 ### My First Automation Lab: Conditional Flow
 
-A foundational n8n lab demonstrating core automation principles: triggers, data transformation via code, and conditional branching. This project serves as a starting point for building complex, logic-driven AI agents.
+In this lab, I walk through the fundamentals of n8n workflow automation by focusing on four key areas:
 
-A beginner-friendly project designed to master the fundamentals of **n8n workflow automation**. In this lab, we move beyond linear tasks to create a logic-driven workflow that makes decisions based on data.
+- <b>Trigger Management:</b> Setting up schedules to act as an agent's "heartbeat."
 
-<b>What You’ll Learn</b>
-- **Trigger Management:** Setting up schedules to act as an agent's "heartbeat."
-- **Data Transformation:** Using the Code Node to inject and manipulate JSON data.
-- **Conditional Logic:** Implementing `If` nodes to create branching outcomes.
-- **Branching Workflows:** Executing different actions based on real-time data analysis.
+- <b>Data Transformation:</b> Using the Code Node to inject and manipulate JSON data.
 
-<b>Lab Overview</b>
-1. **Schedule Trigger:** Defines the automation frequency.
-2. **Code Node:** Simulates an data source (e.g., weather conditions).
-3. **If Node:** Logic engine that evaluates data (e.g., `if weather == 'sunny'`).
-4. **Set Nodes:** Defines branching outcomes (e.g., "Bright day!" vs "Cloudy day").
+- <b>Conditional Logic:</b> Implementing If nodes to evaluate information.
+
+- <b>Branching Workflows:</b> Executing different actions based on real-time data analysis.
+
+The lab is structured as a logical flow, beginning with a Schedule Trigger to define my automation frequency, followed by a Code Node that simulates a data source, such as weather conditions. From there, I utilize an If Node as a logic engine to evaluate that data—for instance, checking if the weather is "sunny"—and finally, I connect Set Nodes to define distinct branching outcomes, such as sending a bright message for sunny days or a calmer one for cloudy conditions.
+
+<b>💡 The Learning Outcome:</b> By following these steps, I can visualize how data flows through the system and how my logic dictates the final output. This process ensures that I am not just building a static script, but a dynamic, decision-making workflow that serves as the foundation for the more advanced autonomous agents I plan to build later.
+
+<b>View DEMO:</b> [HERE](https://youtu.be/FcLEMod7w-M)
+
 
 
 
