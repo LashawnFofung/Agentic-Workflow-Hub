@@ -7,7 +7,7 @@
 
 ----
 
-#### Hello World!
+### Hello World!
 
 This "Hello World" lab is a foundational exercise designed to verify that your n8n environment is correctly installed and configured. By building this simple workflow, you confirm that you can create nodes, configure them, and successfully execute an end-to-end process.
 
