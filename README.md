@@ -39,7 +39,7 @@ This is my foundational project demonstrating the **"Agentic Loop."**
   
   - <b>2. Add to n8n:</b>
   
-    - Open the SerpApi node.
+    - Open the [SerpApi](https://serpapi.com/) node.
     
     - Under "Credential for SerpApi," click Create New Credential.
     
