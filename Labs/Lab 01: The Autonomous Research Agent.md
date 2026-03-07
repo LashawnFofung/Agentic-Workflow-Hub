@@ -3,7 +3,7 @@
 ## AI Agent Workflows
 - ["Hello World!"](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#hello-world)
 
-- []()
+- [My First AI Agent with N8N: Conditional Flow](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#my-first-ai-agent-with-n8n-conditional-flow)
 
 ----
 
