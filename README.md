@@ -35,9 +35,9 @@ This is my foundational project demonstrating the **"Agentic Loop."**
 
 <b>2. 🔍 Connect the Hands (Search Tool)</b>
 
-  <b>1. Get your Key:</b> Go to SerpApi.com and create a free account. Copy your API Key from the dashboard.
+  - <b>1. Get your Key:</b> Go to SerpApi.com and create a free account. Copy your API Key from the dashboard.
   
-  <b>2. Add to n8n:</b>
+  - <b>2. Add to n8n:</b>
   
     - Open the SerpApi node.
     
@@ -47,11 +47,11 @@ This is my foundational project demonstrating the **"Agentic Loop."**
 
 <b>3. 🏁 Run Your First Test</b>
 
-  <b>1. Click the "Chat" button at the bottom of the n8n canvas.
+  - <b>1. Click the "Chat" button at the bottom of the n8n canvas.
   
-  <b>2. Type a request like:</b> "Research the top 3 AI automation trends for 2026."
+  - <b>2. Type a request like:</b> "Research the top 3 AI automation trends for 2026."
   
-  <b>3. Observe the "Thought Process":</b> You will see the AI Agent node light up, call the search tool, and then generate your report.
+  - <b>3. Observe the "Thought Process":</b> You will see the AI Agent node light up, call the search tool, and then generate your report.
      
 ### 🎯 Objective
 Create an agent capable of performing live web research to bypass LLM knowledge cutoffs and provide structured, up-to-date reports.
