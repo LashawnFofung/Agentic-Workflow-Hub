@@ -17,6 +17,42 @@ The goal of these labs is to move beyond simple "linear" automation and into **A
 ## 🧪 Lab 01: The Autonomous Research Agent
 This is my foundational project demonstrating the **"Agentic Loop."**
 
+<b>🚀 Quick Start Guide: Lab 01</b>
+  
+  To get this agent running, you need to connect its "Brain" and its "Hands." Follow these steps:
+
+   <b>1. 🧠 Connect the Brain (Google Gemini)</b>
+
+  - <b>1. Get your Key:</b> Go to Google AI Studio and click "Create API key".
+  
+  - <b>2. Add to n8n:</b> Open the Google Gemini Chat Model node.
+  
+    - Under "Credential for Google Gemini API," click Create New Credential.
+    
+    - Paste your key and click Save.
+  
+  - <b>3. Select Model:</b> Ensure the Model field is set to gemini-1.5-flash or gemini-2.0-flash.
+
+<b>2. 🔍 Connect the Hands (Search Tool)</b>
+
+  <b>1. Get your Key:</b> Go to SerpApi.com and create a free account. Copy your API Key from the dashboard.
+  
+  <b>2. Add to n8n:</b>
+  
+    - Open the SerpApi node.
+    
+    - Under "Credential for SerpApi," click Create New Credential.
+    
+    - Paste your key and click Save.
+
+<b>3. 🏁 Run Your First Test</b>
+
+  <b>1. Click the "Chat" button at the bottom of the n8n canvas.
+  
+  <b>2. Type a request like:</b> "Research the top 3 AI automation trends for 2026."
+  
+  <b>3. Observe the "Thought Process":</b> You will see the AI Agent node light up, call the search tool, and then generate your report.
+     
 ### 🎯 Objective
 Create an agent capable of performing live web research to bypass LLM knowledge cutoffs and provide structured, up-to-date reports.
 
