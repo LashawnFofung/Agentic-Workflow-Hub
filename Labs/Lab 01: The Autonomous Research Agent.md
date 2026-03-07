@@ -54,7 +54,7 @@ The lab is structured as a logical flow, beginning with a Schedule Trigger to de
 <b>💡 The Learning Outcome:</b> By following these steps, I can visualize how data flows through the system and how my logic dictates the final output. This process ensures that I am not just building a static script, but a dynamic, decision-making workflow that serves as the foundation for the more advanced autonomous agents I plan to build later.
 
 
-![My First AI Agent with N8N](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/My%20First%20AI%20Agent.png)
+![My First AI Agent with N8N](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/My%20First%20AI%20Agent%20with%20N8N.png)
 
 <b>View DEMO:</b> [HERE](https://youtu.be/FcLEMod7w-M)
 
