@@ -21,7 +21,9 @@ The agent will search the web, analyze the information, and return a comprehensi
 Let me know if you'd like to adjust the report structure, add more tools, or modify how the agent behaves!
 
 <br>
+
 **Connection Port	What to connect it to	Purpose**
+
 - <b></b>Chat Trigger:</b>	This is the "Data flow"—the user's message enters here.
 
 - <b>AI Language Model - Google Gemini Chat Model:</b>	This is the "Brain"—the agent's reasoning engine.
