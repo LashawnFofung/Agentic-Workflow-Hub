@@ -1,7 +1,7 @@
 # 🧪 Lab 01: The Autonomous Research Agent
 
 ## Table of Contents
-- "Hello World!"
+- ["Hello World!"](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#hello-world)
 
 - 
 
