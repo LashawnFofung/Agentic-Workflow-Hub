@@ -6,19 +6,6 @@ The goal of these labs is to move beyond simple "linear" automation and into **A
 
 ---
 
-/
-├── Labs/
-│   ├── 01-gemini-research-agent/    
-│   │   ├── workflow.json           
-│   │   └── README.md                
-│   ├── 02-lead-enrichment-agent/   
-│   └── 03-multi-agent-orchestrator/ 
-├── .gitignore
-├── LICENSE
-└── README.md                        
-
----
-
 ## 🛠️ Tech Stack
 * **Orchestrator:** [n8n](https://n8n.io/) (Low-code workflow automation)
 * **Brain:** Google Gemini 1.5 Flash / 2.0 (via Google AI Studio)
