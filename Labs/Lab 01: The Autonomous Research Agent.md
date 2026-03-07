@@ -1,4 +1,4 @@
-# 🧪 Lab 01: The Autonomous Research Agent
+# 🧪 Lab 01: Getting Started with AI Agents – Moodboard Generator
 
 ## AI Agent Workflows
 - ["Hello World!"](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#hello-world)
