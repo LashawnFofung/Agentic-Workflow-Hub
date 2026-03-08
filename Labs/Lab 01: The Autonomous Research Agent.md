@@ -11,6 +11,8 @@
 
 ### Hello World!
 
+<h1></h1>
+
 This "Hello World" lab is a foundational exercise designed to verify that your n8n environment is correctly installed and configured. By building this simple workflow, you confirm that you can create nodes, configure them, and successfully execute an end-to-end process.
 
 **Lab Summary: Hello World in n8n**
@@ -39,6 +41,8 @@ This lab serves as your first step toward becoming a "flow programmer," helping 
 
 ### My First AI Agent with N8N: Conditional Flow
 
+<h1></h1>
+
 In this lab, I walk through the fundamentals of n8n workflow automation by focusing on four key areas:
 
 - <b>Trigger Management:</b> Setting up schedules to act as an agent's "heartbeat."
@@ -64,6 +68,8 @@ The lab is structured as a logical flow, beginning with a Schedule Trigger to de
 <h1></h1>
 
 ### Prompt Generator
+
+<h1></h1>
 
 The **Prompt Generator** is an automated AI agent built in **n8n** that transforms simple, high-level style ideas into professionally structured image generation prompts. This lab demonstrates the transition from a basic chatbot to a specialized AI agent by utilizing **System Messages** to define roles and constraints.
 
