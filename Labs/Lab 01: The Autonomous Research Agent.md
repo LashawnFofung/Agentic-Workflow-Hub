@@ -59,5 +59,33 @@ The lab is structured as a logical flow, beginning with a Schedule Trigger to de
 <b>View DEMO:</b> [HERE](https://youtu.be/FcLEMod7w-M)
 
 
+<h1></h1>
+
+### Prompt Generator
+
+The **Prompt Generator** is an automated AI agent built in **n8n** that transforms simple, high-level style ideas into professionally structured image generation prompts. This lab demonstrates the transition from a basic chatbot to a specialized AI agent by utilizing **System Messages** to define roles and constraints.
+
+**Workflow Architecture**
+
+The workflow follows a linear path from user input to AI-enhanced output:
+1.  **On Chat Message (Trigger):** Captures user input (e.g., "bohemian rugs") via the n8n chat interface.
+2.  **AI Agent (Logic):** Processes the input using a specific "Job Description" (System Message).
+3.  **Google Gemini (Model):** The Large Language Model (LLM) that powers the creativity and text generation.
+
+**Key Features**
+* **Prompt Engineering:** Automatically expands simple phrases into detailed descriptions covering style, texture, lighting, and color palettes.
+* **System Prompting:** Uses a rigorous system message to ensure the AI acts as an "Expert Image Generation Prompt Engineer."
+* **Design-Ready Output:** Generates structured prompts specifically optimized for creating high-quality moodboards.
+
+<br>
+
+![Prompt Generator](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Prompt%20Generator%20Workflow.png)
+
+<br>
+
+![Prompt Generator - Chat Message for Green Rug](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Prompt%20Generator%20Workflow%20-%20Green%20Rug%20Moodboard%20Generator.png)
+
+
+<b>View DEMO:</b> [HERE](https://youtu.be/gX631XzlhJg)
 
 
