@@ -7,6 +7,8 @@
 
 - [Prompt Generator](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#prompt-generator)
 
+- [Moodboard Agent](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Labs/Lab%2001:%20The%20Autonomous%20Research%20Agent.md#moodboard-agent)
+
 ----
 
 ### Hello World!
