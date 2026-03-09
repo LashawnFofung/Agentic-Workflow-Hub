@@ -121,14 +121,28 @@ The system is built on a 4-step pipeline designed for precision and stability:
 
 
 
-![Moodboard Agent]()
+![Moodboard Agent Workflow](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow%20screenshot.png)
 
 <br>
 
-![Moodboard Agent]()
+![Moodboard Agent Workflow N8N](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow.png)
+
+<br>
+
+![Moodboard Agent Workflow with Output](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow%20with%20Output.png)
+
+<br>
+
+![Moodboard Agent](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Output%20Round%20Jute%20Rug%20Scandinavian.png)
+
+<br>
+
+![Moodboard Agent Output Round Jute Rug Scandinavian](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Output%20Round%20Jute%20Rug%20Scandinavian.png)
 
 
-<b>View DEMO:</b> [HERE][(](https://youtu.be/NTS5aiap6MQ))
+<b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/NTS5aiap6MQ)
+
+<b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/d6nro9oYpK4)
 
 
 <h1></h1>
