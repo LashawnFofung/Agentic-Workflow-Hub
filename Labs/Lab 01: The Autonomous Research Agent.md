@@ -96,4 +96,38 @@ The workflow follows a linear path from user input to AI-enhanced output:
 
 <b>View DEMO:</b> [HERE](https://youtu.be/gX631XzlhJg)
 
+<h1></h1>
+
+### Moodboard Agent
+
+<h1></h1>
+
+In this lab, I evolved a basic text-based workflow into a fully automated **Moodboard Agent**. By chaining together multiple AI models and custom logic, the agent transforms a simple home décor concept into a high-fidelity, professional moodboard image.
+
+**Workflow Architecture**
+The system is built on a 4-step pipeline designed for precision and stability:
+
+1.  **Trigger (User Input):** Captures a basic décor idea through the n8n chat interface to kick off the automation.
+2.  **The Brain (Prompt Engineer):** Powered by **Google Gemini**, this node uses specialized system prompting to expand raw ideas into detailed technical descriptions (styles, textures, and color palettes).
+3.  **The Editor (Clean Prompt):** A custom **JavaScript** node that sanitizes the AI output. It removes line breaks and Markdown formatting to ensure the data is safe for API transmission.
+4.  **The Artist (Hugging Face):** An HTTP Request node that sends the cleaned instructions to the **FLUX.1-schnell** model to generate the final image.
+
+**Key Learning Outcomes**
+* **Advanced Prompt Engineering:** Defining specific roles and tasks within an AI Agent.
+* **Data Sanitization:** Using JavaScript to resolve formatting conflicts between different AI models.
+* **API Integration:** Connecting to the Hugging Face Inference API using Bearer tokens and JSON body mapping.
+
+
+
+![Moodboard Agent]()
+
+<br>
+
+![Moodboard Agent]()
+
+
+<b>View DEMO:</b> [HERE][(](https://youtu.be/NTS5aiap6MQ))
+
+
+<h1></h1>
 
