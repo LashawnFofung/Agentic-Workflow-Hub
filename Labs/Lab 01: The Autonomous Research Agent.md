@@ -119,28 +119,41 @@ The system is built on a 4-step pipeline designed for precision and stability:
 * **Data Sanitization:** Using JavaScript to resolve formatting conflicts between different AI models.
 * **API Integration:** Connecting to the Hugging Face Inference API using Bearer tokens and JSON body mapping.
 
-
+<br>
 
 ![Moodboard Agent Workflow](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow%20screenshot.png)
+
+<i>N8N Moodboard Agent Workflow Steps and Nodes</i>
+
+<h1></h1>
 
 <br>
 
 ![Moodboard Agent Workflow N8N](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow.png)
 
+<i>N8N Moodboard Agent Workflow Steps and Nodes (top) and bottom has chat input, input generate prompt, and output</i>
+
+<h1></h1>
+
 <br>
 
 ![Moodboard Agent Workflow with Output](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Workflow%20with%20Output.png)
 
-<br>
+<i>Executing Workflow</i>
 
-![Moodboard Agent](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Output%20Round%20Jute%20Rug%20Scandinavian.png)
+<h1></h1>
 
 <br>
 
 ![Moodboard Agent Output Round Jute Rug Scandinavian](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Output%20Round%20Jute%20Rug%20Scandinavian.png)
 
+<i>Generated Image</i>
+
+<h1></h1>
+
 
 <b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/NTS5aiap6MQ)
+
 
 <b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/d6nro9oYpK4)
 
