@@ -147,7 +147,7 @@ The system is built on a 4-step pipeline designed for precision and stability:
 
 ![Moodboard Agent Output Round Jute Rug Scandinavian](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent%20Output%20Round%20Jute%20Rug%20Scandinavian.png)
 
-<i>Generated Image</i>
+<i>Generated Moodboard Image</i>
 
 <h1></h1>
 
