@@ -68,6 +68,8 @@ The lab is structured as a logical flow, beginning with a Schedule Trigger to de
 
 <b>View DEMO:</b> [HERE](https://youtu.be/FcLEMod7w-M)
 
+<b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/My%20First%20AI%20Agent%20with%20N8N.json)
+
 
 <h1></h1>
 
