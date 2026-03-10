@@ -39,6 +39,8 @@ This lab serves as your first step toward becoming a "flow programmer," helping 
 
 <b>View DEMO:</b> [HERE](https://youtu.be/hCA3ZIhQVc8)
 
+<b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Hello%20World.json)
+
 <h1></h1>
 
 ### My First AI Agent with N8N: Conditional Flow
