@@ -1,0 +1,63 @@
+{
+  "name": "Hello World",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "424129e7-2118-4468-bee2-bedd738a6e23",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ \"message\": \"Hello World!\" }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "23271cfc-321d-4c6e-9fde-f69c1d7ac2b4",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "86a5a4cf-37e5-4722-813c-baa3ba38351c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "12207134bc4581f19b6274b56f4778f0de0861dff8bde0c5c8e765de7a45b7f4"
+  },
+  "id": "tUlY48PzZKOM3IEh",
+  "tags": [
+    {
+      "updatedAt": "2026-03-07T18:11:03.260Z",
+      "createdAt": "2026-03-07T18:11:03.260Z",
+      "id": "6qiLjwtakrq8KsFj",
+      "name": "Wayfair Agentic BI"
+    }
+  ]
+}
