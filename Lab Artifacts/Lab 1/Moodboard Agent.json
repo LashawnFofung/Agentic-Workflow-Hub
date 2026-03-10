@@ -1,0 +1,245 @@
+{
+  "name": "Moodboard Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -400,
+        -176
+      ],
+      "id": "f70b1501-427a-45f0-b3d9-9126b47eeb71",
+      "name": "When chat message received",
+      "webhookId": "4cc26fae-0d02-468a-aa7f-bdcabf9715ea"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        32
+      ],
+      "id": "3a41fe51-9996-413f-8e18-03a9a3f94f94",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "2AvqNMlJGDbUXEDJ",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n# Moodboard Agent:\n\n",
+        "height": 1120,
+        "width": 2512,
+        "color": "#8B3A98"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -896,
+        -752
+      ],
+      "typeVersion": 1,
+      "id": "5c24882c-e4c1-4301-b882-7e59815140ee",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## STEP 2: Prompt Engineer\n\n## AI Agent:\n\nGenerate IMAGE generation prompt according to user message (that is related to \"rugs\" trend\"). Uses a specialized System Message and Google Gemini to transform the simple input into a professional, highly detailed image generation prompt.",
+        "height": 720,
+        "width": 416,
+        "color": "#F2A9C3"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -128,
+        -464
+      ],
+      "typeVersion": 1,
+      "id": "34389c52-60e2-4b4e-9d96-70f54092a878",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role: You are an expert image generation prompt engineer.\n\nTask:\nYour role is to take a simple input idea (e.g., “bohemian rugs, neutral tones”) and transform it into one detailed, polished prompt for creating a high-quality moodboard.\n\nWhen creating the prompt, follow these guidelines:\n- Highlight the style, colors, and textures implied in the trend.\n- Include close-up material textures, styled interior spaces, and decor elements that complement the rug’s look.\n- Arrange visuals as a clean, inspiration-ready collection that a design team could immediately use for trend insights.\n- Ensure the final output is ready-to-use, simple, and efficient for an image generator."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -48,
+        -176
+      ],
+      "id": "31692bec-fb7b-444c-9248-fea425195b3e",
+      "name": "Generate Prompt"
+    },
+    {
+      "parameters": {
+        "jsCode": "let inputPrompt = $input.first().json.output;\n\n// 1. Remove line breaks\nlet cleanPrompt = inputPrompt.split(/\\r?\\n/).join(\" \");\n\n// 2. Remove Markdown (** and * bullets)\ncleanPrompt = cleanPrompt.replace(/\\*\\*/g, \"\").replace(/\\*/g, \"\");\n\n// 3. Replace double quotes with single quotes\ncleanPrompt = cleanPrompt.replace(/\"/g, \"'\");\n\n// 4. Build n8n-compatible return\nreturn [\n  {\n    json: {\n      prompt: cleanPrompt\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        -176
+      ],
+      "id": "23820805-7042-4f58-9782-63c641a88c20",
+      "name": "Clean Prompt"
+    },
+    {
+      "parameters": {
+        "content": "\n## STEP 1: User Input\n\n\n## Chat Message\n\n\nCaptures the initial style idea or trend (e.g., \"minimalist oak furniture\") directly from the user via the n8n chat interface.",
+        "height": 720,
+        "width": 416,
+        "color": "#C58D88"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -560,
+        -464
+      ],
+      "typeVersion": 1,
+      "id": "67e69f84-266f-4e41-a2aa-bc897eb39e7f",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer hf_ADD_YOUR_TOKEN"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "image/png"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inputs\": \"{{ $json.prompt }}\"\n}\n",
+        "options": {
+          "response": {
+            "response": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        912,
+        -176
+      ],
+      "id": "fe6ee3f2-590f-4d8d-a6b0-5aa533e0600b",
+      "name": "Hugging Face Image Generator"
+    },
+    {
+      "parameters": {
+        "content": "## STEP 3: Remove Output Formatting\n\n## Clean Prompt JavaScript\n\nA JavaScript Code node that scrubs the AI's response by removing line breaks, Markdown symbols, and special characters to ensure a stable, single-string format.",
+        "height": 720,
+        "width": 416,
+        "color": "#C9B0D7"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        304,
+        -464
+      ],
+      "typeVersion": 1,
+      "id": "f6ff6563-17e4-4797-aa6f-24e4e18684d0",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## STEP 4: Generate Image\n\n## Hugging Face Image Generator\n\n\nSends the cleaned prompt via an HTTP Request to the FLUX.1-schnell model on Hugging Face, returning a high-quality visual moodboard.",
+        "height": 720,
+        "width": 416,
+        "color": "#E3C370"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        736,
+        -464
+      ],
+      "typeVersion": 1,
+      "id": "6918a7ee-a038-4248-af9d-247402ef3527",
+      "name": "Sticky Note4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Generate Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Generate Prompt",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Prompt": {
+      "main": [
+        [
+          {
+            "node": "Clean Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Prompt": {
+      "main": [
+        [
+          {
+            "node": "Hugging Face Image Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "3d5f2509-3c7a-4783-95ee-ceb2a77f6d46",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "12207134bc4581f19b6274b56f4778f0de0861dff8bde0c5c8e765de7a45b7f4"
+  },
+  "id": "7v9DlKEtWU15Dx2r",
+  "tags": []
+}
