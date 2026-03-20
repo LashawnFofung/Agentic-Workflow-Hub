@@ -161,8 +161,9 @@ The system is built on a 4-step pipeline designed for precision and stability:
 
 <b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/d6nro9oYpK4)
 
-<b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent.json)
+<b>View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent.json)
 
+<b> View N8N Workflow (JSON): [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Moodboard%20Agent%20N8N%20Workflow.json)
 
 <h1></h1>
 
