@@ -156,10 +156,10 @@ The system is built on a 4-step pipeline designed for precision and stability:
 <h1></h1>
 
 
-<b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/NTS5aiap6MQ)
+<b>View DEMO (Explaining Workflow):</b> [HERE](https://youtu.be/NTS5aiap6MQ)
 
 
-<b>View DEMO (Explaining Workflow):</b> [HERE][(](https://youtu.be/d6nro9oYpK4)
+<b>View DEMO (Explaining Workflow):</b> [HERE](https://youtu.be/d6nro9oYpK4)
 
 <b>View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%201/Moodboard%20Agent.json)
 
