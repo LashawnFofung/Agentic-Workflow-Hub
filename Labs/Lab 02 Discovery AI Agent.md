@@ -10,7 +10,7 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
   <b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Market%20Trend%20Discovery%20Agent.json)
 
-  <b> View Market Trend Discovery Report</b> [HERE]()
+  <b> View Shag Rug Trend Report</b> [HERE]()
 
 <h1></h1>
 
