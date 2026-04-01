@@ -8,7 +8,7 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
   <b>View DEMO:</b> [HERE](https://youtu.be/c-Kibixr2IA)
 
-  <b> View JSON:</b> [HERE]()
+  <b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Market%20Trend%20Discovery%20Agent.json)
 
 <h1></h1>
 
