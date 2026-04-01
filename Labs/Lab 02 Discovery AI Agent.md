@@ -22,12 +22,11 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
 - **Automated Reporting:** The pipeline concludes with the generation of a dynamic, interactive HTML Trend Report, providing stakeholders with instant visibility into emerging micro-segments and market risks.
 
-  <br>
+  <h1></h1>
 
   ## Workflow Images
 
   **Stage 1: Input & Routing**
-
 
 <img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%201.png%20.png width="700" height="600" alt="Stage 1">
 
@@ -36,17 +35,42 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
 **Stage 2A: Product Data Extraction (Amazon Scrapping)**
 
-
 <img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202A.png width="900" height="800" alt="Stage 1">
   
   <br>
 
   **Stage 2B: Trend & Sentiment Signals**
 
-
 <img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202B.png width="900" height="800" alt="Stage 1">
-  
-  <br>
+
+<br>
+
+  **Stage 3: Synthesis & Output (AI Processing)**
+
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%203.png width="900" height="800" alt="Stage 1">
+
+
+<br>
+
+  **Stage 4: Image Generation**
+
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%204.png width="900" height="800" alt="Stage 1">
+
+
+<br>
+
+  **Stage 5-6: Merge & Report**
+
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%205-6.png width="900" height="800" alt="Stage 1">
+
+
+<br>
+
+  **Stage 7: Output**
+
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%207.png width="900" height="800" alt="Stage 1">
+ 
+ <h1></h1>
 
 
 **Tech Stack:** Orchestration: n8n
