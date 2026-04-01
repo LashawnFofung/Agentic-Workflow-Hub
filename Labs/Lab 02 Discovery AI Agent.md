@@ -29,7 +29,7 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
   **Stage 1: Input & Routing**
 
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%201.png%20.png width="600" height="500" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%201.png%20.png width="700" height="600" alt="Stage 1">
 
 <br>
 
@@ -37,14 +37,14 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 **Stage 2A: Product Data Extraction (Amazon Scrapping)**
 
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202A.png width="600" height="500" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202A.png width="900" height="800" alt="Stage 1">
   
   <br>
 
   **Stage 2B: Trend & Sentiment Signals**
 
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202B.png width="600" height="500" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202B.png width="900" height="800" alt="Stage 1">
   
   <br>
 
