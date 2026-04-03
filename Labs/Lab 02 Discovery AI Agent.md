@@ -6,7 +6,9 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
 <br>
 
-  <b>View DEMO:</b> [HERE](https://youtu.be/c-Kibixr2IA)
+  <b>View DEMO 1 - Stages Canvas & Node Execution Walkthough:</b> [HERE](https://youtu.be/c-Kibixr2IA)
+
+  <b>View DEMO 2 - Detailed Node Execution Walkthorugh: </b> [HERE](https://youtu.be/JWo-M8jyzRA)
 
   <b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Market%20Trend%20Discovery%20Agent.json)
 
