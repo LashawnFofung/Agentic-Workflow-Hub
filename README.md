@@ -8,9 +8,19 @@ The goal of these labs is to move beyond simple "linear" automation and into **A
 
 ## 🛠️ Tech Stack
 * **Orchestrator:** [n8n](https://n8n.io/) (Low-code workflow automation)
-* **Brain:** Google Gemini 1.5 Flash / 2.0 (via Google AI Studio)
-* **Memory:** 
-* **Tools:** 
+* **Brain:** Google Gemini 1.5 Flash / 2.0 (via Google AI Studio) 
+* **Memory:**
+o	Logging Node: Stores "Generation Metadata," such as the number of products analyzed and the "Trend Confidence Score" for each run.
+o	Wait Node: Used to ensure data from previous steps is fully processed before moving to the next stage of the workflow.
+o	Merge/Code Nodes: Act as temporary working memory to combine and structure information from different data sources (e.g., Amazon, blogs, social media) before final report generation.
+•	Tools:
+o	Mistral AI Agents: Used for data processing, product classification, and attribute extraction (cleaning raw data into structured insights).
+o	Extern API: Collects social media (Pinterest, Instagram) and blog trend signals.
+o	HTTP Request / HTML Extract: Used for web scraping to pull product listings and details from Amazon.
+o	Hugging Face (FLUX): Generates photorealistic moodboard-style images for the identified trend segments.
+o	Google Drive: Used in the final stages to store and organize the generated trend reports.
+
+
 
 ---
 
