@@ -51,28 +51,28 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
   **Stage 3: Synthesis & Output (AI Processing)**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%203.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%203.png width="900" height="800" alt="Stage 1">
 
 
 <br>
 
   **Stage 4: Image Generation**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%204.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%204.png width="900" height="800" alt="Stage 1">
 
 
 <br>
 
   **Stage 5-6: Merge & Report**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%205-6.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%205-6.png width="900" height="800" alt="Stage 1">
 
 
 <br>
 
   **Stage 7: Output**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%207.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%207.png width="900" height="800" alt="Stage 1">
  
  <h1></h1>
 
