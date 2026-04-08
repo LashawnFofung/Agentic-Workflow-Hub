@@ -6,7 +6,7 @@ add objective
 
 <br>
 
-  <b>View DEMO Stages & Node Execution Walkthough:</b> [HERE]()
+  <b>View DEMO Stages & Node Execution Walkthough:</b> [HERE](https://youtu.be/gi0bSrUmX9E)
 
   <b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Competitor%20Monitoring%20AI%20Agent.json)
 
