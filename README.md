@@ -10,9 +10,9 @@ The goal of these labs is to move beyond simple "linear" automation and into **A
 * **Orchestrator:** [n8n](https://n8n.io/) (Low-code workflow automation)
 * **Brain:** Google Gemini 1.5 Flash / 2.0 (via Google AI Studio) 
 * **Memory:**
- - **Logging Node:** Stores "Generation Metadata," such as the number of products analyzed and the "Trend Confidence Score" for each run.
- - **Wait Node:** Used to ensure data from previous steps is fully processed before moving to the next stage of the workflow.
- - **Merge/Code Nodes:** Act as temporary working memory to combine and structure information from different data sources (e.g., Amazon, blogs, social media) before final report generation.
+  - **Logging Node:** Stores "Generation Metadata," such as the number of products analyzed and the "Trend Confidence Score" for each run.
+  - **Wait Node:** Used to ensure data from previous steps is fully processed before moving to the next stage of the workflow.
+  - **Merge/Code Nodes:** Act as temporary working memory to combine and structure information from different data sources (e.g., Amazon, blogs, social media) before final report generation.
 * **Tools:**
   - **Mistral AI Agents:** Used for data processing, product classification, and attribute extraction (cleaning raw data into structured insights).
   - **Extern API:** Collects social media (Pinterest, Instagram) and blog trend signals.
