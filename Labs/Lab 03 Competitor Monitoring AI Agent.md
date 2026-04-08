@@ -2,7 +2,7 @@
 
 
   ## Objective:
-add objective
+This lab showcases the integration of multi-modal LLMs and low-code orchestration to transform raw market data into actionable retail insights.
 
 <br>
 
