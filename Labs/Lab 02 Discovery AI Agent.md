@@ -12,7 +12,7 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
   <b> View JSON:</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Market%20Trend%20Discovery%20Agent.json)
 
-  <b> View Shag Rug Trend Report</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Shag%20Rug%20Trend%20Report.pdf)
+  <b> View Shag Rug Trend Report</b> [HERE](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Shag%20Rug%20Trend%20Report.pdf)
 
 <h1></h1>
 
@@ -32,20 +32,20 @@ Developed an autonomous AI agent pipeline designed to bridge the gap between raw
 
   **Stage 1: Input & Routing**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%201.png%20.png width="700" height="600" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%201.png%20.png width="700" height="600" alt="Stage 1">
 
 <br>
 
 
 **Stage 2A: Product Data Extraction (Amazon Scrapping)**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202A.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%202A.png width="900" height="800" alt="Stage 1">
   
   <br>
 
   **Stage 2B: Trend & Sentiment Signals**
 
-<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab2/Stage%202B.png width="900" height="800" alt="Stage 1">
+<img src=https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%202/Stage%202B.png width="900" height="800" alt="Stage 1">
 
 <br>
 
