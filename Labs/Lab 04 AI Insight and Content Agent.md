@@ -1,8 +1,11 @@
 # Lab 04 Designing the AI Insights & Content Agent
 
-[View JSON]()
+[View JSON](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Content%20Strategy%20AI%20Agent.json)
 
 [View Content Strategy Report]()
+
+-----
+
 
 ## 📌 Overview & Business Purpose
 * **Core Objective:** Reverse-engineered and enhanced an inherited n8n-based AI Content Engine to synthesize market trends (Project 2) and competitor analysis (Project 3) into highly actionable, brand-aligned marketing assets.
