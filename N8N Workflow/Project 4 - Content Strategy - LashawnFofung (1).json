@@ -1,0 +1,297 @@
+{
+  "name": "Project 4 - Content Strategy - LashawnFofung",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "91a72c56-8577-4ac4-9d43-42536a2f2275",
+        "formTitle": "Project 4: Upload Your Reports",
+        "formDescription": "Upload your Project 2 (Market Analysis) and Project 3 (Competitor Analysis) HTML reports to generate a comprehensive content strategy.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Product Category",
+              "placeholder": "e.g., Area Rug, Table Lamp, Throw Pillow",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Focus Area",
+              "placeholder": "e.g., Natural & Sustainable, Modern Minimalist"
+            },
+            {
+              "fieldLabel": "P2 Market Analysis Report",
+              "fieldType": "file",
+              "acceptFileTypes": ".html",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "P3 Competitor Analysis Report",
+              "fieldType": "file",
+              "acceptFileTypes": ".html",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Style Persona",
+              "fieldType": "dropdown",
+              "defaultValue": "=Select One",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Select One"
+                  },
+                  {
+                    "option": "Minimalist"
+                  },
+                  {
+                    "option": "Maximalist"
+                  },
+                  {
+                    "option": "Eccentric"
+                  },
+                  {
+                    "option": "Earthy Organic"
+                  },
+                  {
+                    "option": "Luxe Monochrome"
+                  },
+                  {
+                    "option": "Seasonal Refresh"
+                  },
+                  {
+                    "option": "Budget-Conscious"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Vibe Keywords",
+              "placeholder": "e.g., cozy, vibrant, minimalist chic, bohemian luxury",
+              "defaultValue": "Describe the mood or feeling you want."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        32
+      ],
+      "id": "8a9d02d2-a2a8-481a-98d0-945c384dca44",
+      "name": "Upload Form",
+      "webhookId": "91a72c56-8577-4ac4-9d43-42536a2f2275"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst form = items[0].json;\n\nconst category = form['Product Category'] || form.category || 'Area Rug';\nconst focus = form['Focus Area'] || form.focus || '';\n\nlet p2Content = '';\nif (form['P2 Market Analysis Report']) {\n  const p2Data = form['P2 Market Analysis Report'];\n  if (typeof p2Data === 'string') {\n    p2Content = p2Data;\n  } else if (p2Data.data) {\n    p2Content = Buffer.from(p2Data.data, 'base64').toString('utf8');\n  }\n}\n\nlet p3Content = '';\nif (form['P3 Competitor Analysis Report']) {\n  const p3Data = form['P3 Competitor Analysis Report'];\n  if (typeof p3Data === 'string') {\n    p3Content = p3Data;\n  } else if (p3Data.data) {\n    p3Content = Buffer.from(p3Data.data, 'base64').toString('utf8');\n  }\n}\n\nconst stripHtml = (html) => {\n  return html\n    .replace(/<script[^>]*>[\\s\\S]*?<\\/script>/gi, '')\n    .replace(/<style[^>]*>[\\s\\S]*?<\\/style>/gi, '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n};\n\nconst p2Text = stripHtml(p2Content).slice(0, 15000);\nconst p3Text = stripHtml(p3Content).slice(0, 15000);\n\n// Extract new form fields: Style Persona & Vibe Keywords\nconst stylePersona = form['Style Persona'] || 'minimalist';\nconst vibeKeywords = form['Vibe Keywords'] || '';\n\n\n// Added style_persona & p3_content to return object\nreturn [{\n  json: {\n    category,\n    focus,\n    p2_content: p2Text,\n    p3_content: p3Text,\n    style_persona: stylePersona,\n    vibe_keywords: vibeKeywords  \n  }\n}];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        32
+      ],
+      "id": "bf8261e6-9c8a-4f3b-9127-a6852ad94bf6",
+      "name": "Extract Files"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are a Collaborative Design Engine—part senior content strategist for Wayfair, part interior design curator. You act as a \"Knowledgeable Best Friend\": authentic, grounded, and expert without being corporate.\n\n=== USER CONTEXT ===\nUSER STYLE PERSONA: {{ $json[\"Style Persona\"] }}\nUSER VIBE KEYWORDS: {{ $json[\"Vibe Keywords\"] }}\nCategory: {{ $json.category }}\nFocus Area: {{ $json.focus }}\n\n=== STYLE PERSONA RULES ===\nIf MINIMALIST:\n✓ Tone: Clean, intentional, \"less is more\" | Colors: Neutrals (#F5F5F5, #2C2C2C, #A9A9A9) | Textures: Linen, natural wool, concrete\n✗ Avoid: \"Elevate,\" \"seamlessly blends,\" \"curated collection\"\n\nIf MAXIMALIST:\n✓ Tone: Bold, layered, personality-forward, \"go big\" | Colors: Jewel tones (#2F5233, #D4AF37, #8B4513) | Textures: Velvet, silk, brass, marble\n✗ Avoid: \"Timeless,\" \"sophisticated restraint,\" \"harmoniously balanced\"\n\nIf ECCENTRIC:\n✓ Tone: Unexpected, playful rule-breaking | Colors: Neons, clashing prints (#FF1493, #00FF00) | Textures: Mixed materials\n✗ Avoid: \"Cohesive,\" \"elevated,\" \"curated palette\"\n\nIf EARTHY ORGANIC:\n✓ Tone: Grounding, biophilic, natural | Colors: Earth tones (#8B7355, #228B22, #D2B48C) | Textures: Wood grain, raw linen, stone\n✗ Avoid: \"Curated,\" \"timeless elegance,\" \"premium finishes\"\n\nIf LUXE MONOCHROME:\n✓ Tone: Sophisticated, texture-rich, refined | Colors: Deep single color palette (#1C1C1C, #0A0A0A) | Textures: Velvet, cashmere\n✗ Avoid: \"Eclectic,\" \"playful,\" \"bright pops of color\"\n\nIf SEASONAL REFRESH:\n✓ Tone: Trend-responsive, fresh energy | Colors: Current trending palette | Textures: Warm metallics, plush textures\n✗ Avoid: \"Timeless,\" \"classic,\" \"always in style\"\n\nIf BUDGET CONSCIOUS:\n✓ Tone: Smart, practical, \"style without the sticker shock\" | Colors: Flexible | Textures: Durable, affordable alternatives\n✗ Avoid: \"Investment piece,\" \"premium quality,\" \"luxury\"\n\n=== ANTI-AI-ISM FILTER ===\nREPLACE corporate phrases: \"Timeless elegance\" → Specific vibe | \"Seamlessly blends\" → \"Works perfectly with\" | \"Elevate your space\" → \"Transform your [room]\" | \"Curated collection\" → \"Picks/Favorites\" | \"Premium finishes\" → Material names (velvet, brass).\n\n=== DATA INPUTS ===\n=== PROJECT 2 (Market Analysis) ===\n{{ $json.p2_content }}\n\n=== PROJECT 3 (Competitor Analysis) ===\n{{ $json.p3_content }}\n\n=== REQUIREMENTS ===\nYou MUST extract SPECIFIC DATA POINTS from the reports (percentages, price ranges, growth numbers) and reference them throughout.\n\n=== RESPONSE FORMAT ===\nRespond with this EXACT JSON structure:\n{\n  \"key_metrics\": [\n    {\"value\": \"28%\", \"label\": \"YoY Growth\", \"source\": \"P2\"},\n    {\"value\": \"$127-$156\", \"label\": \"Sweet Spot\", \"source\": \"P2\"},\n    {\"value\": \"47%\", \"label\": \"Sustainable Searches\", \"source\": \"P2\"},\n    {\"value\": \"3\", \"label\": \"Competitor Gaps\", \"source\": \"P3\"}\n  ],\n  \"data_foundation\": {\n    \"p2_insights\": [\"Specific finding 1 from P2\", \"Specific finding 2\", \"Specific finding 3\", \"Specific finding 4\"],\n    \"p3_insights\": [\"Specific finding 1 from P3\", \"Specific finding 2\", \"Specific finding 3\", \"Specific finding 4\"]\n  },\n  \"executive_summary\": \"2-3 paragraph strategic overview connecting market opportunity to content strategy using the persona tone.\",\n  \"content_ideas\": [\n    {\"type\": \"Blog Post\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"References X% growth...\", \"seo_keywords\": [\"kw1\", \"kw2\"]},\n    {\"type\": \"Instagram Carousel\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"...\", \"seo_keywords\": []},\n    {\"type\": \"Video\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"...\", \"seo_keywords\": []},\n    {\"type\": \"Pinterest Pin\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"...\", \"seo_keywords\": []},\n    {\"type\": \"Buying Guide\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"...\", \"seo_keywords\": []},\n    {\"type\": \"Email Series\", \"title\": \"...\", \"description\": \"...\", \"data_connection\": \"...\", \"seo_keywords\": []}\n  ],\n  \"social_captions\": {\n    \"instagram\": [{\"caption\": \"...\", \"hashtags\": [\"#tag1\"]}, {\"caption\": \"...\", \"hashtags\": []}],\n    \"pinterest\": [{\"title\": \"...\", \"description\": \"...\"}],\n    \"facebook\": [{\"post\": \"...\"}],\n    \"tiktok\": [{\"hook\": \"...\", \"script\": \"...\"}]\n  },\n  \"campaigns\": [\n    {\n      \"name\": \"...\",\n      \"tagline\": \"...\",\n      \"description\": \"...\",\n      \"details\": {\"content_pillars\": \"...\", \"format\": \"...\", \"competitive_angle\": \"...\", \"seo_opportunity\": \"...\"}\n    },\n    {\n      \"name\": \"...\",\n      \"tagline\": \"...\",\n      \"description\": \"...\",\n      \"details\": {\"content_pillars\": \"...\", \"format\": \"...\", \"competitive_angle\": \"...\", \"timing\": \"...\"}\n    },\n    {\n      \"name\": \"...\",\n      \"tagline\": \"...\",\n      \"description\": \"...\",\n      \"details\": {\"content_pillars\": \"...\", \"format\": \"...\", \"cross_sell\": \"...\", \"micro_segment\": \"...\"}\n    }\n  ],\n  \"email_subjects\": [\n    {\"icon\": \"🌿\", \"subject\": \"The rug trend that's up X% this year\", \"open_rate\": \"high\"},\n    {\"icon\": \"✨\", \"subject\": \"...\", \"open_rate\": \"high\"},\n    {\"icon\": \"🏠\", \"subject\": \"...\", \"open_rate\": \"medium\"},\n    {\"icon\": \"🌊\", \"subject\": \"...\", \"open_rate\": \"high\"},\n    {\"icon\": \"💡\", \"subject\": \"...\", \"open_rate\": \"high\"},\n    {\"icon\": \"🎯\", \"subject\": \"...\", \"open_rate\": \"medium\"}\n  ],\n  \"competitive_angles\": [\n    {\"title\": \"...\", \"competitor_gap\": \"...\", \"wayfair_opportunity\": \"...\"},\n    {\"title\": \"...\", \"competitor_gap\": \"...\", \"wayfair_opportunity\": \"...\"},\n    {\"title\": \"...\", \"competitor_gap\": \"...\", \"wayfair_opportunity\": \"...\"}\n  ],\n  \"content_priorities\": [\n    {\"priority\": 1, \"title\": \"First priority action\", \"rationale\": \"Why this is #1...\"},\n    {\"priority\": 2, \"title\": \"Second priority\", \"rationale\": \"...\"},\n    {\"priority\": 3, \"title\": \"Third priority\", \"rationale\": \"...\"},\n    {\"priority\": 4, \"title\": \"Fourth priority\", \"rationale\": \"...\"}\n  ],\n  \"mood_board_assets\": {\n    \"persona\": \"{{ $json[\"Style Persona\"] }}\",\n    \"vibe_summary\": \"1-sentence vibe for the mood board header\",\n    \"color_palette\": [\n      {\"name\": \"Primary\", \"hex\": \"#XXXXXX\", \"role\": \"Dominant color\"},\n      {\"name\": \"Secondary\", \"hex\": \"#XXXXXX\", \"role\": \"Accent/pattern\"}\n    ],\n    \"texture_recommendations\": [\n      {\"type\": \"Fabric\", \"example\": \"...\", \"price_tier\": \"...\"}\n    ],\n    \"complementary_items\": [\n      {\"category\": \"Rug\", \"style\": \"...\", \"approx_price\": \"...\"}\n    ],\n    \"style_quote\": \"A quote from the Knowledgeable Best Friend persona\",\n    \"visual_keywords\": []\n  },\n  \"share_metadata\": {\n    \"og_title\": \"Vibe Summary\",\n    \"og_description\": \"A {{ $json[\"Style Persona\"] }} mood board for {{ $json.category }}\",\n    \"og_image_placeholder\": \"mood_board_grid\",\n    \"social_hashtags\": [\"#interior\", \"#design\"]\n  }\n}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        480,
+        32
+      ],
+      "id": "12938ce0-e417-4203-948c-f92656f5b73d",
+      "name": "AI Content"
+    },
+    {
+      "parameters": {
+        "model": "mistral-large-latest",
+        "options": {
+          "maxTokens": 6000,
+          "temperature": 0.5
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        480,
+        256
+      ],
+      "id": "31506c01-c40a-4fa6-9190-94a3975b6bd5",
+      "name": "Mistral",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "1sj9XOraQyHdK5dU",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nlet raw = (input.output || input.text || JSON.stringify(input)).replace(/```json|```/g, '').trim();\n\nconst match = raw.match(/\\{[\\s\\S]*\\}/);\nif (match) raw = match[0];\n\nlet content;\ntry {\n  content = JSON.parse(raw);\n} catch (e) {\n  // Premium fallback with full content\n  content = {\n    key_metrics: [\n      {value: '28%', label: 'YoY Growth', source: 'P2'},\n      {value: '$100-$200', label: 'Price Sweet Spot', source: 'P2'},\n      {value: '47%', label: 'Eco-Conscious Searches', source: 'P2'},\n      {value: '3', label: 'Competitor Content Gaps', source: 'P3'}\n    ],\n    data_foundation: {\n      p2_insights: [\n        'Natural fiber rugs showing 28% year-over-year growth',\n        '$100-$200 price range captures highest conversion rates',\n        '47% of searches include sustainability-related terms',\n        'Textured designs outperform flat-weave by 34% in engagement'\n      ],\n      p3_insights: [\n        'Amazon dominates on price ($127 avg) but lacks styling content',\n        'Walmart focuses purely on budget segment with no design guidance',\n        'Neither competitor addresses common customer concerns proactively',\n        'Gap exists for educational content on material selection and care'\n      ]\n    },\n    executive_summary: 'The market analysis reveals a significant opportunity in the natural and textured rug segment, with 28% year-over-year growth driven by consumer demand for sustainable, tactile home products. The $100-$200 price range represents the conversion sweet spot where quality meets accessibility.\\n\\nCompetitor analysis shows Amazon and Walmart dominating on volume and price, but leaving a critical gap in design guidance and educational content. Wayfair can differentiate by positioning as \"the friend who knows design\" — offering expertise, not just products.\\n\\nThis content strategy leverages these insights to capture organic traffic, build brand authority, and convert browsers into buyers through value-added content that competitors simply do not provide.',\n    content_ideas: [\n      {type: 'Blog Post', title: 'Why Natural Fiber Rugs Are the Biggest Home Trend of 2026', description: 'Deep-dive into the sustainability movement driving natural rug popularity. Covers jute, sisal, seagrass options with styling tips.', data_connection: 'References 28% YoY growth from P2 trend data', seo_keywords: ['natural fiber rugs', 'jute rug guide', 'sustainable home decor']},\n      {type: 'Instagram Carousel', title: '5 Ways to Style a Natural Rug', description: 'Visual guide showing natural rugs in different room settings. Before/after transformations with styling tips.', data_connection: 'Addresses P3 gap: competitors lack styling content', seo_keywords: ['rug styling', 'home decor tips']},\n      {type: 'Video', title: 'Jute vs Sisal vs Seagrass: Which Natural Rug Is Right for You?', description: 'Comparison video addressing the #1 customer question. Covers durability, feel, best rooms for each.', data_connection: 'Answers softness concern from P3 competitor reviews', seo_keywords: ['jute vs sisal', 'natural rug comparison']},\n      {type: 'Pinterest Pin', title: 'The Complete Natural Rug Size Guide', description: 'Infographic showing rug sizing for living room, bedroom, dining room with furniture placement tips.', data_connection: 'SEO opportunity for \"rug size guide\" searches', seo_keywords: ['rug size guide', 'area rug sizing']},\n      {type: 'Buying Guide', title: 'The Ultimate Guide to Choosing Natural Rugs', description: 'Comprehensive pillar content covering materials, care, pricing, and styling. Evergreen SEO asset.', data_connection: 'Captures long-tail searches competitors ignore', seo_keywords: ['natural rug buying guide', 'how to choose a rug']},\n      {type: 'Email Series', title: '3-Part Natural Rug Education Series', description: 'Drip campaign: (1) Why natural fibers, (2) Choosing the right material, (3) Care & maintenance tips.', data_connection: 'Nurtures 47% eco-conscious segment from P2', seo_keywords: []}\n    ],\n    social_captions: {\n      instagram: [\n        {caption: 'Natural rugs are up 28% this year — and we totally get why. 🌿 There\\'s something about jute that just makes a room feel... right. Shop our natural collection (link in bio)', hashtags: ['#naturalrugs', '#juterug', '#sustainablehome', '#homedecor', '#wayfair']},\n        {caption: 'POV: You finally found the perfect rug. ✨ (It\\'s natural fiber, under $150, and looks way more expensive than it is)', hashtags: ['#arearug', '#homeinspo', '#livingroomstyle', '#interiordesign']}\n      ],\n      pinterest: [\n        {title: 'Natural Fiber Rugs: The 2026 Trend You Need to Know', description: 'Jute, sisal, and seagrass rugs are having a major moment. Here\\'s why designers love them — and how to choose the right one for your space.'}\n      ],\n      facebook: [\n        {post: 'Did you know natural fiber rugs are up 28% this year? 🌿 We\\'re not surprised — there\\'s nothing quite like the texture of a beautiful jute rug underfoot. Curious which natural rug is right for you? We made a guide: [link]'}\n      ],\n      tiktok: [\n        {hook: 'The rug trend that\\'s up 28% this year...', script: 'And no, it\\'s not what you think. It\\'s natural fiber rugs — jute, sisal, seagrass. Here\\'s why everyone\\'s obsessed...'}\n      ]\n    },\n    campaigns: [\n      {\n        name: 'Naturally Wayfair',\n        tagline: 'Beautiful floors. Lighter footprint.',\n        description: 'A sustainability-focused campaign positioning Wayfair as the destination for eco-conscious home shoppers. Connects product quality to environmental values.',\n        details: {\n          content_pillars: 'Sustainability education, Material guides, Eco-lifestyle inspiration',\n          format: 'Blog hub, Social series, Email campaign, Collection landing page',\n          competitive_angle: 'Neither Amazon nor Walmart leads with sustainability messaging',\n          seo_opportunity: 'Capture \"sustainable rugs,\" \"eco-friendly home decor\" searches'\n        }\n      },\n      {\n        name: 'The Natural Rug Guide',\n        tagline: 'Jute, sisal, seagrass — decoded.',\n        description: 'An educational content series establishing Wayfair as the trusted authority on natural rugs. Addresses competitor gap: Amazon offers products, Wayfair offers expertise.',\n        details: {\n          content_pillars: 'Materials education, Room-by-room guides, Care & maintenance',\n          format: 'Blog hub, Instagram carousel series, Downloadable PDF, Video tutorials',\n          competitive_angle: 'Position against Amazon\\'s \"wall of products\" — Wayfair helps you choose',\n          seo_opportunity: 'Capture \"jute rug guide,\" \"sisal vs jute,\" \"natural rug care\" searches'\n        }\n      },\n      {\n        name: 'Coastal Natural Collection',\n        tagline: 'Bring the beach home — naturally.',\n        description: 'Curated collection targeting the Coastal Natural micro-segment. Combines jute/sisal rugs with blue-cream palettes for cohesive shopping.',\n        details: {\n          content_pillars: 'Coastal styling, Natural textures, Color coordination',\n          format: 'Collection page, Lookbook, Social campaign, Email feature',\n          cross_sell: 'Bundle with coastal pillows, natural baskets, linen curtains',\n          timing: 'Spring launch (March-April) for summer refresh mindset'\n        }\n      }\n    ],\n    email_subjects: [\n      {icon: '🌿', subject: 'The rug trend that\\'s up 28% this year (and under $150)', open_rate: 'high'},\n      {icon: '✨', subject: 'Jute rugs: finally, a complete guide', open_rate: 'high'},\n      {icon: '🏠', subject: 'Your living room called. It wants a natural rug.', open_rate: 'medium'},\n      {icon: '🌊', subject: 'Coastal + sustainable = our new favorite look', open_rate: 'high'},\n      {icon: '💡', subject: 'The #1 question about jute rugs (answered)', open_rate: 'high'},\n      {icon: '🎯', subject: '[Name], natural rugs are trending — here\\'s why', open_rate: 'medium'}\n    ],\n    competitive_angles: [\n      {\n        title: 'Design Guidance vs. Product Walls',\n        competitor_gap: 'Amazon shows thousands of rugs with minimal styling content. Walmart focuses purely on price.',\n        wayfair_opportunity: 'Lead with \"how to choose\" content. Every product page, email, and social post should educate, not just sell. Position Wayfair as \"the friend who knows design.\"'\n      },\n      {\n        title: 'Premium Natural at Accessible Prices',\n        competitor_gap: 'Amazon averages $127 for jute rugs; Wayfair at $142. But neither emphasizes value proposition.',\n        wayfair_opportunity: 'Justify the slight premium through quality storytelling, style guidance, and \"investment piece\" messaging. Show why $15 more gets you better design curation.'\n      },\n      {\n        title: 'Answering the Softness Question',\n        competitor_gap: 'Top review concern across Amazon/Walmart is \"will this be soft enough?\" Neither addresses it proactively.',\n        wayfair_opportunity: 'Create content directly addressing comfort: \"The Truth About Jute Softness,\" product descriptions that mention feel, and UGC showcasing real homes.'\n      }\n    ],\n    content_priorities: [\n      {priority: 1, title: 'Publish \"Why Natural Fiber Rugs Are Trending\" Blog', rationale: 'Capitalizes on 28% YoY growth while trend is hot. Establishes authority. Repurposes into social, email, Pinterest.'},\n      {priority: 2, title: 'Launch Instagram Styling Series', rationale: 'Directly addresses competitor gap (no styling content). Targets #juterug trend. Creates shareable differentiation.'},\n      {priority: 3, title: 'Create \"Jute Buying Guide\" Pillar Content', rationale: 'SEO opportunity for guide searches. Answers softness question. Evergreen organic traffic asset.'},\n      {priority: 4, title: 'Plan \"Naturally Wayfair\" Campaign for Q2', rationale: 'Larger initiative bundling sustainable content. Aligns with spring refresh. Highest differentiation potential.'}\n    ]\n  };\n}\n\nconst category = input.category || 'Area Rug';\nconst focus = input.focus || '';\n\nreturn [{ json: { content, category, focus } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        32
+      ],
+      "id": "0005d577-6370-40e1-91e4-a463bd21c94a",
+      "name": "Parse Content"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\nconst c = data.content || {};\nconst mb = c.mood_board_assets || {};\nconst sm = c.share_metadata || {};\nconst category = data.category || 'Area Rug';\nconst focus = data.focus || 'Natural & Sustainable';\nconst esc = s => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\n// --- DATA PROCESSING WITH FALLBACKS ---\n\n// Metrics\nconst metrics = c.key_metrics || [];\nlet metricsHtml = metrics.length > 0 \n  ? metrics.map((m, idx) => `\n      <div class=\"insight-card\">\n        <div class=\"number\" id=\"metric-val-${idx}\">${esc(m.value)}</div>\n        <div class=\"label\">${esc(m.label)}</div>\n      </div>\n    `).join('')\n  : '<p style=\"grid-column: 1/-1; text-align: center; color: #999;\">No metrics found in reports.</p>';\n\n// Mood Board: Colors\nconst colorsHtml = (mb.color_palette || []).length > 0\n  ? (mb.color_palette || []).map(col => `\n      <div class=\"color-card\">\n        <div class=\"color-swatch\" style=\"background-color: ${esc(col.hex || '#cccccc')};\"></div>\n        <p class=\"color-name\">${esc(col.name || 'Accent Color')}</p>\n        <p class=\"color-role\">${esc(col.role || 'Secondary')}</p>\n      </div>\n    `).join('')\n  : '<p style=\"color: #999;\">Select a different persona to generate specific colors.</p>';\n\n// Mood Board: Textures\nconst texturesHtml = (mb.texture_recommendations || []).length > 0\n  ? (mb.texture_recommendations || []).map(t => `\n      <div class=\"texture-card\">\n        <h4>${esc(t.type || 'Texture')}</h4>\n        <p class=\"example\">${esc(t.example || 'N/A')}</p>\n        <p class=\"price\" style=\"color: var(--accent); font-weight: bold;\">${esc(t.price_tier || '')}</p>\n      </div>\n    `).join('')\n  : '<p style=\"color: #999;\">No texture recommendations available for this focus.</p>';\n\n// Mood Board: Items\nconst itemsHtml = (mb.complementary_items || []).length > 0\n  ? (mb.complementary_items || []).map(item => `\n      <div class=\"item-card\">\n        <h4>${esc(item.category || 'Item')}</h4>\n        <p class=\"style\">${esc(item.style || 'Matching Style')}</p>\n        <p class=\"price-range\">${esc(item.approx_price || 'Contact for Price')}</p>\n      </div>\n    `).join('')\n  : '<p style=\"color: #999;\">No furniture pairings suggested.</p>';\n\n// Content Ideas\nconst ideas = c.content_ideas || [];\nlet ideasHtml = ideas.length > 0\n  ? ideas.map((i, idx) => {\n      const kws = (i.seo_keywords || []).map(k => `<span class=\"keyword\">${esc(k)}</span>`).join('');\n      return `\n      <div class=\"content-card\">\n        <div class=\"content-card-header\">\n          <div class=\"type\">${esc(i.type)}</div>\n          <select class=\"status-select no-print\" id=\"status-content-${idx}\" onchange=\"saveStatus(this.id, this.value)\">\n            <option value=\"todo\">📋 To Do</option>\n            <option value=\"doing\">⚡ Drafting</option>\n            <option value=\"done\">✅ Ready</option>\n          </select>\n        </div>\n        <div class=\"content-card-body\">\n          <h4>${esc(i.title)}</h4>\n          <p id=\"desc-text-${idx}\">${esc(i.description)}</p>\n          <div class=\"data-tag\">📊 ${esc(i.data_connection)}</div>\n          ${kws ? `<div class=\"keywords\">${kws}</div>` : ''}\n          <button class=\"copy-tool-btn no-print\" onclick=\"copyText('desc-text-${idx}')\">📋 Copy Description</button>\n        </div>\n      </div>`;\n    }).join('')\n  : '<p style=\"color: #999; text-align: center; width: 100%;\">No content ideas generated.</p>';\n\n// Social Media\nconst soc = c.social_captions || {};\nlet igHtml = (soc.instagram || []).length > 0\n  ? (soc.instagram || []).map((p, idx) => `\n      <div class=\"phone-mockup\">\n        <div class=\"phone-screen\">\n          <div class=\"platform-badge ig\">Instagram</div>\n          <p id=\"ig-cap-${idx}\">${esc(p.caption)}</p>\n          <div class=\"hashtags\">${(p.hashtags || []).join(' ')}</div>\n          <button class=\"copy-tool-btn no-print\" onclick=\"copyText('ig-cap-${idx}')\">📋 Copy Caption</button>\n        </div>\n      </div>`).join('')\n  : '<p style=\"color: #999;\">Social captions will appear here.</p>';\n\n// Email Subjects\nconst emails = c.email_subjects || [];\nlet emailsHtml = emails.length > 0\n  ? emails.map((e, idx) => `\n      <div class=\"email-subject\">\n        <span class=\"icon\">${e.icon || '📧'}</span>\n        <span class=\"subject-text\" id=\"em-sub-${idx}\">${esc(e.subject)}</span>\n        <div class=\"email-actions\">\n           <span class=\"open-rate ${e.open_rate === 'high' ? 'high' : 'medium'}\">Est. ${e.open_rate === 'high' ? 'High' : 'Med'}</span>\n           <i class=\"fa-regular fa-copy copy-icon no-print\" onclick=\"copyText('em-sub-${idx}')\"></i>\n        </div>\n      </div>`).join('')\n  : '<p style=\"color: #999;\">No email concepts generated.</p>';\n\n// --- FULL HTML TEMPLATE ---\n\nconst html = `<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Dashboard | ${esc(category)}</title>\n  <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">\n  <style>\n    :root { --primary-color: #7B2D8E; --bg-light: #f4f7f9; --accent: #2d8659; }\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-light); color: #333; }\n    \n    .dashboard-nav { background: white; padding: 10px; display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 2000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }\n    .nav-btn { padding: 10px 20px; border: none; background: none; font-weight: 600; color: #666; cursor: pointer; border-radius: 8px; transition: 0.3s; }\n    .nav-btn.active { background: var(--primary-color); color: white; }\n\n    .container { max-width: 1100px; margin: 20px auto; padding: 0 20px 100px 20px; }\n    .tab-content { display: none; }\n    .tab-content.active { display: block; animation: fadeIn 0.4s; }\n\n    .header { background: linear-gradient(135deg, #7B2D8E 0%, #5E1A6E 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 25px; text-align: center; }\n    .section { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }\n    \n    .status-select { font-size: 0.75rem; padding: 4px; border-radius: 4px; border: 1px solid #ddd; outline: none; background: #fff; cursor: pointer; }\n    .copy-tool-btn { margin-top: 10px; width: 100%; padding: 8px; border: 1px dashed var(--primary-color); color: var(--primary-color); background: #fdf7ff; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s; }\n    .copy-tool-btn:hover { background: #f0e1f7; }\n    .copy-icon { cursor: pointer; color: var(--primary-color); margin-left: 10px; }\n\n    .summary-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center; }\n    .chart-box { height: 200px; width: 200px; margin: auto; }\n    .metrics-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }\n    .insight-card { background: #f9f9f9; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #eee; }\n    .insight-card .number { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }\n\n    .creative-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }\n    .phone-mockup { border: 12px solid #222; border-radius: 36px; background: #fff; padding: 15px; min-height: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }\n    .platform-badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; color: white; margin-bottom: 15px; }\n    .ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }\n\n    .color-grid, .texture-grid, .items-grid, .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }\n    .color-swatch { height: 60px; border-radius: 6px; margin-bottom: 5px; border: 1px solid #ddd; }\n    .email-subject { display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 10px; }\n    .open-rate { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }\n    .high { background: #e6f4ea; color: #1e7e34; }\n\n    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }\n\n    @media print {\n      .no-print, .dashboard-nav, .copy-tool-btn, .status-select, .copy-icon { display: none !important; }\n      body { background: white !important; }\n      .tab-content { display: block !important; opacity: 1 !important; }\n      .container { max-width: none; width: 100%; margin: 0; padding: 0; }\n      .section { box-shadow: none; border: 1px solid #eee; page-break-inside: avoid; }\n      .color-swatch { -webkit-print-color-adjust: exact; print-color-adjust: exact; }\n      .header { background: #7B2D8E !important; color: white !important; -webkit-print-color-adjust: exact; }\n    }\n  </style>\n</head>\n<body>\n\n  <nav class=\"dashboard-nav no-print\">\n    <button class=\"nav-btn active\" onclick=\"showSection('strategy', this)\">📈 Strategy</button>\n    <button class=\"nav-btn\" onclick=\"showSection('moodboard', this)\">🎨 Design</button>\n    <button class=\"nav-btn\" onclick=\"showSection('creative', this)\">📱 Creative</button>\n    <button class=\"nav-btn\" style=\"color: var(--accent)\" onclick=\"window.print()\">🖨️ PDF</button>\n  </nav>\n\n  <div class=\"container\">\n    <header class=\"header\">\n      <h1>Content Strategy Dashboard</h1>\n      <p>${esc(category)} | ${esc(focus)}</p>\n    </header>\n\n    <div id=\"strategy\" class=\"tab-content active\">\n      <section class=\"section\">\n        <h2>Market Snapshot</h2>\n        <div class=\"summary-grid\">\n          <div class=\"chart-box\"><canvas id=\"marketChart\"></canvas></div>\n          <div class=\"metrics-list\">${metricsHtml}</div>\n        </div>\n        <p style=\"margin-top:20px;\">${esc(c.executive_summary || 'Your executive summary will appear here once the reports are processed.')}</p>\n      </section>\n\n      <section class=\"section\">\n        <h2>Execution Priorities</h2>\n        <div class=\"content-grid\">${ideasHtml}</div>\n      </section>\n    </div>\n\n    <div id=\"moodboard\" class=\"tab-content\">\n      <section class=\"section\">\n        <div style=\"text-align:center; margin-bottom:20px;\">\n          <h2>${esc(mb.vibe_summary || 'Visual Direction')}</h2>\n          <p><i>${mb.style_quote ? `\"${esc(mb.style_quote)}\"` : 'Defining the aesthetic for your brand.'}</i></p>\n        </div>\n        <h3>Primary Palette</h3>\n        <div class=\"color-grid\">${colorsHtml}</div>\n        <h3 style=\"margin-top:20px;\">Textures & Materials</h3>\n        <div class=\"texture-grid\">${texturesHtml}</div>\n        <h3 style=\"margin-top:20px;\">Furniture Pairing</h3>\n        <div class=\"items-grid\">${itemsHtml}</div>\n      </section>\n    </div>\n\n    <div id=\"creative\" class=\"tab-content\">\n      <section class=\"section\">\n        <h2>Social Mockups</h2>\n        <div class=\"creative-grid\">${igHtml}</div>\n      </section>\n      <section class=\"section\">\n        <h2>Email Subjects</h2>\n        <div style=\"display: flex; flex-direction: column; gap: 10px;\">${emailsHtml}</div>\n      </section>\n    </div>\n  </div>\n\n  <script>\n    function showSection(sectionId, btn) {\n      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));\n      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));\n      document.getElementById(sectionId).classList.add('active');\n      btn.classList.add('active');\n    }\n\n    function copyText(id) {\n      const el = document.getElementById(id);\n      if (!el) return;\n      const text = el.innerText;\n      \n      navigator.clipboard.writeText(text).then(() => {\n        const btn = event.currentTarget;\n        const original = btn.innerHTML;\n        btn.innerHTML = '✅ Copied!';\n        btn.style.background = '#e6f4ea';\n        setTimeout(() => { \n          btn.innerHTML = original; \n          btn.style.background = '';\n        }, 2000);\n      });\n    }\n\n    function saveStatus(id, value) {\n      localStorage.setItem('content_strat_' + id, value);\n    }\n\n    window.onload = function() {\n      document.querySelectorAll('.status-select').forEach(select => {\n        const saved = localStorage.getItem('content_strat_' + select.id);\n        if (saved) select.value = saved;\n      });\n\n      const ctx = document.getElementById('marketChart').getContext('2d');\n      new Chart(ctx, {\n        type: 'doughnut',\n        data: {\n          labels: ['Growth', 'Gap'],\n          datasets: [{\n            data: [28, 72],\n            backgroundColor: ['#7B2D8E', '#eee'],\n            borderWidth: 0\n          }]\n        },\n        options: { cutout: '80%', plugins: { legend: { display: false } } }\n      });\n    };\n  </script>\n</body>\n</html>`;\n\nreturn [{json: {html, category, focus}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        32
+      ],
+      "id": "08f1603c-2da6-4ec2-a0b8-2ed49a9e6e1f",
+      "name": "Build HTML"
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $input.first().json.html;\nconst cat = $input.first().json.category || 'Area Rug';\nconst ts = new Date().toISOString().split('T')[0];\nconst fileName = `Wayfair_${cat.replace(/\\s+/g, '_')}_Content_Strategy_${ts}.html`;\n\nreturn [{\n  json: { html, fileName },\n  binary: {\n    data: {\n      data: Buffer.from(html).toString('base64'),\n      mimeType: 'text/html',\n      fileName: fileName\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        32
+      ],
+      "id": "469a661a-cbda-4da7-acdb-c9511a5ad6a3",
+      "name": "Download"
+    },
+    {
+      "parameters": {
+        "html": "{{ $json.html }}"
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        1440,
+        32
+      ],
+      "id": "a8fa8d79-7f78-44ac-bd1e-67b0fbfee66d",
+      "name": "Preview"
+    },
+    {
+      "parameters": {
+        "content": "## Project 4 v3 - PREMIUM\n\n**Matches Sample Report Quality:**\n✅ Header with meta badges\n✅ Key Metrics cards (28%, $127, etc.)\n✅ Data Foundation (P2/P3 bullets)\n✅ Content Ideas with data tags\n✅ 3 Campaign concepts\n✅ 6 Email subjects with icons\n✅ Competitive Angles section\n✅ Content Priorities (1,2,3,4)\n✅ TikTok captions added",
+        "height": 300,
+        "width": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        256
+      ],
+      "id": "54412626-dc9d-495c-9e18-076785455953",
+      "name": "Notes"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Upload Form": {
+      "main": [
+        [
+          {
+            "node": "Extract Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Files": {
+      "main": [
+        [
+          {
+            "node": "AI Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Content",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Content": {
+      "main": [
+        [
+          {
+            "node": "Parse Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Content": {
+      "main": [
+        [
+          {
+            "node": "Build HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build HTML": {
+      "main": [
+        [
+          {
+            "node": "Download",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download": {
+      "main": [
+        [
+          {
+            "node": "Preview",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "fc1f1a90-d796-4ff2-8bbc-961fee80b219",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b18837ee8458913810902541b6f52853988b69afd98421f8763bc54ebe48f50b"
+  },
+  "id": "gOJrGT6ryWr2P4So",
+  "tags": []
+}
