@@ -1,5 +1,9 @@
 # Lab 04 Designing the AI Insights & Content Agent
 
+[View JSON]()
+
+[View Content Strategy Report]()
+
 ## 📌 Overview & Business Purpose
 * **Core Objective:** Reverse-engineered and enhanced an inherited n8n-based AI Content Engine to synthesize market trends (Project 2) and competitor analysis (Project 3) into highly actionable, brand-aligned marketing assets.
 * **Tech Stack:** n8n (Workflow Automation), Mistral AI (`mistral-large-latest`), JavaScript/HTML5/CSS3.
