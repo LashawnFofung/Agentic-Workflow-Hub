@@ -2,7 +2,7 @@
 
 [View JSON](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/N8N%20Workflow/Content%20Strategy%20AI%20Agent.json)
 
-[View Content Strategy Report]()
+[View Content Strategy Report](https://github.com/LashawnFofung/Agentic-Workflow-Hub/blob/main/Lab%20Artifacts/Lab%204/Wayfair_Area_Rug_Content_Strategy.html)
 
 -----
 
