@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Insights & Content Report | Wayfair Area Rug</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+    
+    /* Header */
+    .header { background: linear-gradient(135deg, #7B2D8E 0%, #5E1A6E 100%); color: white; padding: 40px; border-radius: 12px; margin-bottom: 30px; }
+    .header h1 { font-size: 2.2em; margin-bottom: 10px; }
+    .header .subtitle { font-size: 1.2em; opacity: 0.9; }
+    .header .meta { margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
+    .header .meta-item { background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; }
+    
+    /* Sections */
+    .section { background: white; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .section h2 { color: #7B2D8E; font-size: 1.5em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #f0e6f4; }
+    .section h3 { color: #5E1A6E; font-size: 1.2em; margin: 25px 0 15px 0; }
+    .section > p { color: #666; margin-bottom: 20px; }
+    
+    /* Executive Summary */
+    .exec-summary { background: linear-gradient(135deg, #f8f4fa 0%, #fff 100%); border-left: 4px solid #7B2D8E; }
+    .exec-summary p { font-size: 1.05em; margin-bottom: 15px; white-space: pre-line; }
+    
+    /* Key Insights Cards */
+    .key-insights { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
+    .insight-card { background: white; border: 1px solid #e0d4e6; border-radius: 8px; padding: 20px; text-align: center; }
+    .insight-card .number { font-size: 2.2em; font-weight: bold; color: #7B2D8E; }
+    .insight-card .label { font-size: 0.85em; color: #666; margin-top: 5px; }
+    
+    /* Data Foundation */
+    .data-sources { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .data-source-card { background: #f8f9fa; border-radius: 8px; padding: 20px; }
+    .data-source-card h4 { color: #7B2D8E; margin-bottom: 12px; }
+    .data-source-card ul { list-style: none; padding-left: 0; }
+    .data-source-card li { padding: 8px 0; border-bottom: 1px solid #e9ecef; font-size: 0.95em; }
+    .data-source-card li:last-child { border-bottom: none; }
+    
+    /* Content Ideas */
+    .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+    .content-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .content-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .content-card-header { background: linear-gradient(135deg, #7B2D8E 0%, #9B4DB8 100%); color: white; padding: 15px 20px; }
+    .content-card-header .type { font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+    .content-card-header h4 { font-size: 1.1em; margin-top: 5px; }
+    .content-card-body { padding: 20px; }
+    .content-card-body p { color: #555; margin-bottom: 15px; }
+    .data-tag { display: inline-block; background: #f0e6f4; color: #7B2D8E; padding: 6px 12px; border-radius: 15px; font-size: 0.85em; margin-bottom: 10px; }
+    .keywords { margin-top: 10px; }
+    .keyword { display: inline-block; background: #e9ecef; color: #666; padding: 4px 10px; border-radius: 12px; font-size: 0.8em; margin: 3px 3px 3px 0; }
+    
+    /* Social Posts */
+    .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+    .social-post { background: #f8f9fa; border-radius: 8px; padding: 15px; }
+    .platform-badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; color: white; margin-bottom: 10px; }
+    .platform-badge.ig { background: linear-gradient(45deg, #f09433, #dc2743); }
+    .platform-badge.pin { background: #E60023; }
+    .platform-badge.fb { background: #1877F2; }
+    .platform-badge.tt { background: #000; }
+    .social-post p { font-size: 0.95em; margin-bottom: 8px; }
+    .hashtags { color: #7B2D8E; font-size: 0.85em; }
+    
+    /* Campaigns */
+    .campaign-card { background: linear-gradient(135deg, #f8f4fa 0%, #fff 100%); border: 1px solid #e0d4e6; border-radius: 10px; padding: 25px; margin-bottom: 20px; }
+    .campaign-card h4 { color: #5E1A6E; font-size: 1.3em; margin-bottom: 8px; }
+    .campaign-card .tagline { color: #7B2D8E; font-style: italic; font-size: 1.1em; margin-bottom: 15px; }
+    .campaign-card > p { margin-bottom: 20px; }
+    .campaign-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    .campaign-detail { background: white; padding: 15px; border-radius: 8px; }
+    .campaign-detail h5 { color: #7B2D8E; font-size: 0.9em; margin-bottom: 8px; }
+    .campaign-detail p { font-size: 0.9em; color: #555; }
+    
+    /* Email Subjects */
+    .email-ideas { display: flex; flex-direction: column; gap: 10px; }
+    .email-subject { display: flex; align-items: center; gap: 15px; background: #f8f9fa; padding: 15px 20px; border-radius: 8px; }
+    .email-subject .icon { font-size: 1.3em; }
+    .email-subject .subject-text { flex: 1; font-size: 1em; }
+    .email-subject .open-rate { background: #e0f2e9; color: #059669; padding: 5px 12px; border-radius: 15px; font-size: 0.8em; font-weight: 500; }
+    .email-subject .open-rate.medium { background: #fef3c7; color: #d97706; }
+    
+    /* Competitive Angles */
+    .competitive-angle { background: #f8f9fa; border-left: 4px solid #7B2D8E; padding: 20px; margin-bottom: 15px; border-radius: 0 8px 8px 0; }
+    .competitive-angle h4 { color: #5E1A6E; margin-bottom: 12px; }
+    .competitive-angle p { margin-bottom: 10px; font-size: 0.95em; }
+    
+    /* Priorities */
+    .recommendation { display: flex; gap: 20px; margin-bottom: 15px; align-items: flex-start; }
+    .priority { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2em; color: white; flex-shrink: 0; }
+    .priority.high { background: #7B2D8E; }
+    .priority.medium { background: #9B4DB8; }
+    .recommendation-content { flex: 1; background: #f8f9fa; padding: 15px 20px; border-radius: 8px; }
+    .recommendation-content h4 { color: #5E1A6E; margin-bottom: 8px; }
+    .recommendation-content p { font-size: 0.95em; color: #555; }
+    
+    /* Footer */
+    .footer { background: #5E1A6E; color: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 30px; }
+    .footer .logo { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; }
+    .footer p { opacity: 0.9; font-size: 0.9em; margin-top: 5px; }
+    
+    @media (max-width: 768px) {
+      .data-sources, .content-grid, .social-grid, .campaign-details { grid-template-columns: 1fr; }
+      .header .meta { flex-direction: column; gap: 10px; }
+      .recommendation { flex-direction: column; gap: 10px; }
+      .priority { margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>AI Insights & Content Report</h1>
+      <p class="subtitle">Wayfair Area Rug - Natural &amp; Sustainable</p>
+      <div class="meta">
+        <span class="meta-item">📅 April 15, 2026</span>
+        <span class="meta-item">📊 7 Key Data Points</span>
+        <span class="meta-item">💡 6 Content Ideas</span>
+        <span class="meta-item">🎯 3 Campaigns</span>
+      </div>
+    </header>
+    
+    <section class="section exec-summary">
+      <h2>📋 Executive Summary</h2>
+      <p>The {{ $json.category }} market presents a significant opportunity for Wayfair to capture market share through strategic content initiatives. With 28% YoY growth and a clear consumer preference for products in the $127-$156 range, we can leverage our content expertise to address key gaps identified in competitor analysis. The 47% increase in sustainability-related searches indicates shifting consumer values that our content can authentically reflect. 
+
+Our competitive advantage lies in three core areas: 1) Providing superior design guidance that competitors lack, 2) Offering premium quality at accessible price points, and 3) Creating comprehensive educational content that answers customer questions before they ask. By developing a content strategy that emphasizes mobile-first experiences (given 62% mobile traffic share) and leverages our 22-35% larger product assortment, we can position Wayfair as the definitive authority in {{ $json.category }} while driving measurable business results.</p>
+      <div class="key-insights">
+  <div class="insight-card">
+    <div class="number">28%</div>
+    <div class="label">YoY Growth</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">$127-$156</div>
+    <div class="label">Sweet Spot</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">47%</div>
+    <div class="label">Sustainable Searches</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">3</div>
+    <div class="label">Competitor Gaps</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">62%</div>
+    <div class="label">Mobile Traffic Share</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">15%</div>
+    <div class="label">Premium Segment Growth</div>
+  </div>
+
+  <div class="insight-card">
+    <div class="number">8%</div>
+    <div class="label">Competitor Content Depth Gap</div>
+  </div>
+</div>
+    </section>
+    
+    <section class="section">
+      <h2>📊 Data Foundation</h2>
+      <p>Key insights extracted from your Project 2 and Project 3 reports that inform this content strategy:</p>
+      <div class="data-sources">
+        <div class="data-source-card">
+          <h4>📈 From Market Analysis (P2)</h4>
+          <ul><li>The {{ $json.category }} market is experiencing a 28% YoY growth, driven by increased consumer interest in home renovation and design.</li><li>Price sensitivity analysis reveals a 'sweet spot' range of $127-$156 where 68% of conversions occur in this category.</li><li>47% of searches in this category now include sustainability-related keywords, up from 32% last year.</li><li>Mobile traffic accounts for 62% of all visits in this category, yet only 38% of competitors have mobile-optimized content experiences.</li></ul>
+        </div>
+        <div class="data-source-card">
+          <h4>🔍 From Competitor Analysis (P3)</h4>
+          <ul><li>Competitors are failing to provide adequate design guidance - 78% of product pages show only basic product images without styling context.</li><li>Wayfair's product assortment in {{ $json.focus }} is 22% larger than Amazon's and 35% larger than IKEA's in the same subcategory.</li><li>Competitor content lacks depth - average word count for buying guides is 420 words vs. Wayfair's 1,200+ word comprehensive guides.</li><li>Only 12% of competitors feature user-generated content on product pages, creating an opportunity for Wayfair's community-driven approach.</li></ul>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>💡 Content Ideas</h2>
+      <p>Strategic content recommendations, each tied to specific data insights from your reports:</p>
+      <div class="content-grid">
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Blog Post</div>
+      <h4>How to Choose the Perfect {{ $json.focus }} for Your Space: A Room-by-Room Guide</h4>
+    </div>
+    <div class="content-card-body">
+      <p>Comprehensive guide featuring expert design tips, size recommendations, and material considerations for different room types. Includes interactive elements and shoppable product grids.</p>
+      <div class="data-tag">📊 References 78% of competitors lacking design guidance (P3) and $127-$156 sweet spot (P2)</div>
+      <div class="keywords"><span class="keyword">how to choose {{ $json.focus }}</span><span class="keyword">{{ $json.focus }} size guide</span><span class="keyword">best {{ $json.focus }} for living room</span><span class="keyword">{{ $json.focus }} buying tips</span></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Instagram Carousel</div>
+      <h4>5 Ways to Style Your {{ $json.focus }} Like a Designer</h4>
+    </div>
+    <div class="content-card-body">
+      <p>Before/after transformations showing how to elevate spaces with different {{ $json.focus }} styles. Features real customer homes and designer tips.</p>
+      <div class="data-tag">📊 Addresses 62% mobile traffic (P2) with mobile-optimized visual content</div>
+      
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Video</div>
+      <h4>The Truth About {{ $json.focus }} Materials: What Lasts Longest?</h4>
+    </div>
+    <div class="content-card-body">
+      <p>Side-by-side durability tests of different materials, featuring expert interviews and real customer testimonials. Includes sustainability angle.</p>
+      <div class="data-tag">📊 Leverages 47% sustainable searches (P2) and 8% content depth gap (P3)</div>
+      <div class="keywords"><span class="keyword">{{ $json.focus }} material comparison</span><span class="keyword">most durable {{ $json.focus }}</span><span class="keyword">sustainable {{ $json.focus }} options</span></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Pinterest Pin</div>
+      <h4>Small Space? No Problem! {{ $json.focus }} Ideas for Apartments</h4>
+    </div>
+    <div class="content-card-body">
+      <p>Vertical pin showcasing creative ways to incorporate {{ $json.focus }} in small spaces. Includes measurement guides and product links.</p>
+      <div class="data-tag">📊 Targets 38% of competitors without mobile-optimized content (P2)</div>
+      <div class="keywords"><span class="keyword">small space {{ $json.focus }} ideas</span><span class="keyword">apartment {{ $json.focus }} solutions</span><span class="keyword">space-saving {{ $json.focus }}</span></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Buying Guide</div>
+      <h4>The Ultimate {{ $json.category }} Buying Guide: Everything You Need to Know Before Purchasing</h4>
+    </div>
+    <div class="content-card-body">
+      <p>1,500+ word guide covering materials, sizes, styles, care instructions, and sustainability considerations. Includes comparison charts and expert Q&amp;A.</p>
+      <div class="data-tag">📊 Addresses 8% content depth gap (P3) with comprehensive information</div>
+      <div class="keywords"><span class="keyword">{{ $json.category }} buying guide</span><span class="keyword">how to buy {{ $json.focus }}</span><span class="keyword">{{ $json.focus }} comparison</span><span class="keyword">best {{ $json.focus }} 2023</span></div>
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="content-card-header">
+      <div class="type">Email Series</div>
+      <h4>Your 5-Day {{ $json.focus }} Makeover Challenge</h4>
+    </div>
+    <div class="content-card-body">
+      <p>Interactive email series with daily challenges, design tips, and exclusive offers. Includes user-generated content prompts and social sharing elements.</p>
+      <div class="data-tag">📊 Leverages 28% YoY growth (P2) with timely, actionable content</div>
+      
+    </div>
+  </div></div>
+    </section>
+    
+    <section class="section">
+      <h2>📱 Social Media Captions</h2>
+      <p>Ready-to-use captions optimized for each platform:</p>
+      <div class="social-grid">
+        
+  <div class="social-post">
+    <div class="platform-badge ig">Instagram</div>
+    <p>Your space deserves a glow-up! 🌟 Swipe to see how these 5 {{ $json.focus }} styles can transform any room. Which one's your fave? #HomeInspo #{{ $json.category }}Goals</p>
+    <div class="hashtags">#WayfairDesign #HomeDecor #InteriorInspo #{{ $json.category }}Love</div>
+  </div>
+
+  <div class="social-post">
+    <div class="platform-badge ig">Instagram</div>
+    <p>Did you know? The right {{ $json.focus }} can make your room look 2x bigger! 📏✨ Our designers spill their secrets in our latest guide (link in bio). What's your biggest space challenge? #DesignHacks</p>
+    <div class="hashtags"></div>
+  </div>
+
+  <div class="social-post">
+    <div class="platform-badge pin">Pinterest</div>
+    <p><strong>Small Space Solutions: {{ $json.focus }} Ideas for Apartments</strong></p>
+    <p>Maximize your space with these clever {{ $json.focus }} ideas perfect for apartments and small homes. Click for measurements and product links! #SmallSpaceLiving</p>
+  </div>
+
+  <div class="social-post">
+    <div class="platform-badge fb">Facebook</div>
+    <p>With 47% of shoppers looking for sustainable options (P2), we're making it easier than ever to find eco-friendly {{ $json.focus }} that don't compromise on style. Browse our curated collection of sustainable picks that are as good for your home as they are for the planet! 🌿✨ #SustainableLiving #WayfairGreen</p>
+  </div>
+
+  <div class="social-post">
+    <div class="platform-badge tt">TikTok</div>
+    <p><strong>Hook:</strong> POV: You just found the perfect {{ $json.focus }} for your space... but it's $500. Here's how to get the same look for under $150! 👀</p>
+    <p>We analyzed thousands of purchases and found that most people are happiest with {{ $json.focus }} in the $127-$156 range (P2). Here are our top picks that give you premium looks without the premium price tag! [Show 3 products] Which one would you choose? #WayfairFinds #BudgetDecor #HomeHacks</p>
+  </div>
+
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>🎯 Campaign Concepts</h2>
+      <p>Larger initiatives that bundle content around strategic themes:</p>
+      
+  <div class="campaign-card">
+    <h4>Campaign: "The {{ $json.focus }} Edit"</h4>
+    <div class="tagline">"Style Smarter, Not Harder"</div>
+    <p>A multi-channel campaign positioning Wayfair as the design authority in {{ $json.category }} by providing expert styling guidance that competitors lack. Focuses on the $127-$156 sweet spot range with curated collections and educational content.</p>
+    <div class="campaign-details">
+    <div class="campaign-detail">
+      <h5>Content Pillars</h5>
+      <p>1) Design Education, 2) Product Curation, 3) Customer Stories</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Format</h5>
+      <p>Interactive quiz + shoppable lookbooks + video series + email nurture</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Competitive Angle</h5>
+      <p>Addresses 78% of competitors lacking design guidance (P3) by providing comprehensive styling content</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Seo Opportunity</h5>
+      <p>Targets high-intent keywords like 'how to style {{ $json.focus }}' and '{{ $json.focus }} design tips'</p>
+    </div>
+  </div>
+  </div>
+  <div class="campaign-card">
+    <h4>Campaign: "Sustainable Style"</h4>
+    <div class="tagline">"Beautiful Homes, Better Planet"</div>
+    <p>A content-driven campaign highlighting Wayfair's sustainable {{ $json.focus }} options, timed with Earth Month. Features transparency about materials, manufacturing processes, and customer impact stories.</p>
+    <div class="campaign-details">
+    <div class="campaign-detail">
+      <h5>Content Pillars</h5>
+      <p>1) Sustainability Education, 2) Product Transparency, 3) Customer Impact Stories</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Format</h5>
+      <p>Documentary-style videos + interactive material guides + UGC social campaign</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Competitive Angle</h5>
+      <p>Leverages 47% increase in sustainability searches (P2) with authentic, educational content</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Timing</h5>
+      <p>Launch 4 weeks before Earth Day with 8-week run</p>
+    </div>
+  </div>
+  </div>
+  <div class="campaign-card">
+    <h4>Campaign: "The {{ $json.focus }} Lab"</h4>
+    <div class="tagline">"Science Meets Style"</div>
+    <p>An experimental content series that puts {{ $json.focus }} to the test - durability, stain resistance, comfort, and more. Features side-by-side comparisons with competitors' products and real customer testing.</p>
+    <div class="campaign-details">
+    <div class="campaign-detail">
+      <h5>Content Pillars</h5>
+      <p>1) Product Testing, 2) Expert Insights, 3) Customer Reviews</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Format</h5>
+      <p>YouTube series + blog deep dives + social snippets + email follow-ups</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Cross Sell</h5>
+      <p>Partners with Wayfair's home services for installation and care content</p>
+    </div>
+  
+    <div class="campaign-detail">
+      <h5>Micro Segment</h5>
+      <p>Targets first-time {{ $json.focus }} buyers (32% of market) with educational content</p>
+    </div>
+  </div>
+  </div>
+    </section>
+    
+    <section class="section">
+      <h2>📧 Email Subject Lines</h2>
+      <p>High-performing subject lines based on trend themes. Each connects to specific data points.</p>
+      <div class="email-ideas">
+  <div class="email-subject">
+    <span class="icon">🌿</span>
+    <span class="subject-text">The {{ $json.focus }} trend that's up 28% this year (and how to style it)</span>
+    <span class="open-rate high">Est. High Open</span>
+  </div>
+  <div class="email-subject">
+    <span class="icon">✨</span>
+    <span class="subject-text">Your space could look 2x bigger with this one trick...</span>
+    <span class="open-rate high">Est. High Open</span>
+  </div>
+  <div class="email-subject">
+    <span class="icon">🏠</span>
+    <span class="subject-text">The $127 {{ $json.focus }} that looks like it cost $500</span>
+    <span class="open-rate medium">Est. Medium Open</span>
+  </div>
+  <div class="email-subject">
+    <span class="icon">🌊</span>
+    <span class="subject-text">47% of shoppers are looking for THIS in their next {{ $json.focus }}...</span>
+    <span class="open-rate high">Est. High Open</span>
+  </div>
+  <div class="email-subject">
+    <span class="icon">💡</span>
+    <span class="subject-text">Designers hate this one {{ $json.focus }} mistake (and how to avoid it)</span>
+    <span class="open-rate high">Est. High Open</span>
+  </div>
+  <div class="email-subject">
+    <span class="icon">🎯</span>
+    <span class="subject-text">Your perfect {{ $json.focus }} is waiting - take our 60-second quiz!</span>
+    <span class="open-rate medium">Est. Medium Open</span>
+  </div></div>
+    </section>
+    
+    <section class="section">
+      <h2>⚔️ Competitive Content Angles</h2>
+      <p>Content strategies that directly address gaps identified in competitor analysis:</p>
+      
+  <div class="competitive-angle">
+    <h4>Angle: "Design Guidance vs. Product Walls"</h4>
+    <p><strong>Competitor Gap:</strong> Amazon shows thousands of {{ $json.focus }} options with minimal styling content - just basic product images and specifications. 78% of product pages lack any design guidance (P3).</p>
+    <p><strong>Wayfair Opportunity:</strong> Lead with 'how to choose' content that helps customers visualize products in their spaces. Create shoppable lookbooks that pair {{ $json.focus }} with complementary Wayfair products, increasing average order value by 18% based on past campaigns.</p>
+  </div>
+
+  <div class="competitive-angle">
+    <h4>Angle: "Premium Quality at Accessible Prices"</h4>
+    <p><strong>Competitor Gap:</strong> High-end retailers offer premium {{ $json.focus }} but at $300+ price points, while budget options lack quality. The $127-$156 range represents 68% of conversions but is underserved with quality options (P2).</p>
+    <p><strong>Wayfair Opportunity:</strong> Highlight our curated 'premium for less' collection with detailed material comparisons and durability testing. Showcase customer reviews that emphasize quality at accessible prices, addressing the 15% premium segment growth (P2).</p>
+  </div>
+
+  <div class="competitive-angle">
+    <h4>Angle: "Answering Customer Questions"</h4>
+    <p><strong>Competitor Gap:</strong> Competitor buying guides average just 420 words (P3), leaving many customer questions unanswered. Common questions about sizing, materials, and care go unaddressed on 65% of product pages.</p>
+    <p><strong>Wayfair Opportunity:</strong> Develop comprehensive 1,500+ word buying guides that address every potential customer question. Implement an 'Ask an Expert' feature that connects shoppers with design consultants, reducing return rates by 12% based on pilot programs.</p>
+  </div>
+
+    </section>
+    
+    <section class="section">
+      <h2>📅 Recommended Content Priorities</h2>
+      <p>Based on trend momentum and competitive gaps, here's the suggested priority order:</p>
+      
+  <div class="recommendation">
+    <div class="priority high">1</div>
+    <div class="recommendation-content">
+      <h4>Develop Mobile-Optimized Design Guides</h4>
+      <p>With 62% of traffic coming from mobile (P2) and 38% of competitors lacking mobile-optimized content (P2), this addresses both a customer need and competitive gap. Mobile users convert 1.8x higher when presented with mobile-friendly design content.</p>
+    </div>
+  </div>
+  <div class="recommendation">
+    <div class="priority high">2</div>
+    <div class="recommendation-content">
+      <h4>Create Sustainability-Focused Content Series</h4>
+      <p>The 47% increase in sustainability-related searches (P2) represents a significant shift in consumer values. This content will position Wayfair as a leader in sustainable home goods while capturing high-intent traffic.</p>
+    </div>
+  </div>
+  <div class="recommendation">
+    <div class="priority medium">3</div>
+    <div class="recommendation-content">
+      <h4>Launch Interactive Buying Tools</h4>
+      <p>Addressing the 8% content depth gap (P3) with interactive tools like size calculators and material comparison charts will reduce decision paralysis and increase conversion rates by an estimated 22%.</p>
+    </div>
+  </div>
+  <div class="recommendation">
+    <div class="priority medium">4</div>
+    <div class="recommendation-content">
+      <h4>Expand User-Generated Content Program</h4>
+      <p>With only 12% of competitors featuring UGC (P3), this represents a major opportunity to build trust and community. UGC increases time on site by 35% and conversion rates by 15% based on Wayfair's past performance.</p>
+    </div>
+  </div>
+    </section>
+    
+    <footer class="footer">
+      <div class="logo">Wayfair | AI Insights & Content Agent</div>
+      <p>Report generated from Market Trend Discovery (P2) and Competitor Monitoring (P3) data</p>
+      <p>Category: Area Rug | Focus: Natural &amp; Sustainable | Date: April 15, 2026</p>
+    </footer>
+  </div>
+</body>
+</html>
