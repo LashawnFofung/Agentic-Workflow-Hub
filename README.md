@@ -26,9 +26,9 @@
 | **What I built** | A chain of n8n agents that scrapes product and trend data, analyzes it with LLMs, writes reports, and merges everything into one executive dashboard. |
 | **Agents** | Moodboard Generator · Market Trend Discovery · Competitor Monitoring · Insights & Content · Dashboard Builder |
 | **Output** | Trend reports, a competitor analysis, a 3-tab content strategy app, and a unified Market Intelligence Dashboard, generated in under a minute |
-| **Companion repo** | The product side — three PRDs, the prototype, and the case study — lives in **[Wayfair-Agentic-BI](https://github.com/LashawnFofung/Wayfair-Agentic-BI)** |
+| **Companion repo** | The product side — four PRDs, the prototype, and the case study — lives in **[Wayfair-Agentic-BI](https://github.com/LashawnFofung/Wayfair-Agentic-BI)** |
 
-> *Independent learning project using Wayfair as the example business. Not affiliated with or endorsed by Wayfair.*
+> *8-week technical externship project using Wayfair as the business case. Not affiliated with or endorsed by Wayfair.*
 
 ---
 
@@ -151,7 +151,7 @@ Each agent started as a standalone lab. By Lab 05, the trend and competitor agen
 
 ## My Role
 
-Solo project. I designed, built, and documented all five agents, extended an inherited content workflow (Lab 04), and wrote the matching PRDs and case study in [Wayfair-Agentic-BI](https://github.com/LashawnFofung/Wayfair-Agentic-BI).
+Built during an 8-week technical externship. I designed, built, and documented all five agents, extended an inherited content workflow (Lab 04), and wrote the matching PRDs and case study in [Wayfair-Agentic-BI](https://github.com/LashawnFofung/Wayfair-Agentic-BI).
 
 ---
 
